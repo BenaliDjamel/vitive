@@ -2,7 +2,7 @@
     "name": "djamel/vitive",
     "autoload": {
         "psr-4": {
-            "Djamel\\Vitive\\": "src/"
+            "Vitive\\": "src/"
         }
     },
     "authors": [
