@@ -1,0 +1,17 @@
+{
+    "name": "djamel/vitive",
+    "autoload": {
+        "psr-4": {
+            "Djamel\\Vitive\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Djamel Benali",
+            "email": "djamelbenalidev@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
