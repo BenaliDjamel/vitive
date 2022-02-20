@@ -27,11 +27,9 @@ final class CreateProjectTest extends TestCase {
      */
     public function can_create_a_project() {
 
-         $project = $this->createProject->createProject(new ProjectRequest("id-1", "project-1"));
+         $project = $this->createProject->createProject(new ProjectRequest( "project-1"));
 
          $this->assertEquals('project-1', $project->name);
-
-
 
     }
 
