@@ -13,7 +13,7 @@ final class UpdateProjectDetails {
 
     public function __construct(private ProjectRepository $projectRepository){}
 
-    public function updateProject(UpdateProjectRequest $request): UpdateProjectResponse{
+    public function execute(UpdateProjectRequest $request): UpdateProjectResponse{
          $project = $this->projectRepository->ofId(ProjectId::fromString($request->id));
 
         if(!$project) {

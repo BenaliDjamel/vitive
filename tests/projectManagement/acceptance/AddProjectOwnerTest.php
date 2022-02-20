@@ -3,12 +3,8 @@ use PHPUnit\Framework\TestCase;
 use Vitive\projectManagement\application\AddProjectOwner;
 use Vitive\projectManagement\application\commands\AddProjectOwnerRequest;
 use Vitive\projectManagement\domain\ProjectRepository;
-use Vitive\projectManagement\application\CreateProject;
-use Vitive\projectManagement\application\commands\ProjectRequest;
 use Vitive\projectManagement\infrastructure\persistence\MemoryRepository;
 use Tests\projectManagement\common\ProjectFactory;
-
-use function PHPUnit\Framework\assertSame;
 
 final class AddProjectOwnerTest extends TestCase {
 
@@ -35,7 +31,7 @@ final class AddProjectOwnerTest extends TestCase {
         $this->projectRepository->save($project);
 
 
-        $this->addProjectOwner->addOwner(new AddProjectOwnerRequest($project->id(), $ownerId));
+        $this->addProjectOwner->execute(new AddProjectOwnerRequest($project->id(), $ownerId));
 
         $this->assertSame($ownerId, $project->owner());
 

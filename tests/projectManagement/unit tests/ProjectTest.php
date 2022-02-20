@@ -33,7 +33,7 @@ final class ProjectTest extends TestCase
 
         $id = $this->createUuid();
 
-        $project = Project::create(ProjectId::fromString($id), "   ");
+        Project::create(ProjectId::fromString($id), "   ");
 
     }
 
@@ -42,9 +42,10 @@ final class ProjectTest extends TestCase
      */
     public function it_update_project_name() {
         $id = $this->createUuid();
-
         $project = Project::create(ProjectId::fromString($id), "p1");
+
         $project->updateName("vivite");
+
         $this->assertSame("vivite", $project->name());
 
     }
@@ -67,8 +68,6 @@ final class ProjectTest extends TestCase
     private function createUuid(): string {
         return Uuid::uuid4()->toString();
     }
-
-   
 }
 
 

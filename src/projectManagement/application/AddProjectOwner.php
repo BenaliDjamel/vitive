@@ -14,7 +14,7 @@ final class AddProjectOwner {
 
     public function __construct(private ProjectRepository $projectRepository){}
 
-    public function addOwner(AddProjectOwnerRequest $request){
+    public function execute(AddProjectOwnerRequest $request){
 
         $project = $this->projectRepository->ofId(ProjectId::fromString($request->projectId));
 

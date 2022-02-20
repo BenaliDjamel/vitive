@@ -12,7 +12,7 @@ final class CreateProject {
 
     public function __construct(private ProjectRepository $projectRepository){}
 
-    public function createProject(ProjectRequest $request) : ProjectResponse{
+    public function execute(ProjectRequest $request) : ProjectResponse{
 
         $project =  Project::create($this->projectRepository->nextIdentity(), $request->name);
         
