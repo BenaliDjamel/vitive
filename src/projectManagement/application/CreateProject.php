@@ -5,6 +5,7 @@ use Vitive\projectManagement\application\commands\ProjectRequest;
 use Vitive\projectManagement\application\commands\ProjectResponse;
 use Vitive\projectManagement\domain\ProjectRepository;
 use Vitive\projectManagement\domain\Project;
+use Vitive\projectManagement\domain\vo\OwnerId;
 use Vitive\projectManagement\domain\vo\ProjectId;
 
 final class CreateProject {
@@ -14,7 +15,9 @@ final class CreateProject {
 
     public function execute(ProjectRequest $request) : ProjectResponse{
 
-        $project =  Project::create($this->projectRepository->nextIdentity(), $request->name);
+        $ownerId = $request->ownerId ? OwnerId::fromString($request->ownerId): null;
+
+        $project =  Project::create($this->projectRepository->nextIdentity(), $request->name, $ownerId, $request->dueDate);
         
         $response = $this->projectRepository->save($project);
 

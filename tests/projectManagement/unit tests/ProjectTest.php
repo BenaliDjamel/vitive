@@ -12,7 +12,7 @@ final class ProjectTest extends TestCase
      /**
      * @test
      */
-    public function create_project(): void
+    public function create_project_with_name(): void
     {
         $id = $this->createUuid();
 
@@ -62,6 +62,23 @@ final class ProjectTest extends TestCase
         $project->addOwner(OwnerId::fromString($ownerId));
         
         $this->assertSame($ownerId, $project->owner());
+
+    }
+
+    /**
+     * @test
+     */
+    public function it_can_create_project_with_all_properties() {
+        $id = $this->createUuid();
+        $ownerId = $this->createUuid();
+        $dueDate = new DateTimeImmutable('2022-02-25');
+
+        $project = Project::create(ProjectId::fromString($id), 'p1', OwnerId::fromString($ownerId), $dueDate);
+
+        $this->assertEquals('p1', $project->name());
+        $this->assertEquals($id, $project->id());
+        $this->assertEquals($ownerId, $project->owner());
+        $this->assertEquals($dueDate , $project->dueDate());
 
     }
 
