@@ -1,11 +1,12 @@
 <?php declare(strict_types=1);
 namespace Vitive\projectManagement\domain;
 
+use Vitive\projectManagement\domain\vo\OwnerId;
 use Vitive\projectManagement\domain\vo\ProjectId;
 
 final class Project {
 
-    private function __construct( private ProjectId $projectId,  private string $name)
+    private function __construct( private ProjectId $projectId,  private string $name, private ?string $ownerId = null)
     {
     }
 
@@ -28,6 +29,16 @@ final class Project {
 
          $this->name = $name;
 
+    }
+
+    public function addOwner(OwnerId $owner) {
+
+        $this->ownerId = $owner->id();
+
+    }
+
+    public function owner(): string {
+        return $this->ownerId;
     }
 
     public function name(): string {

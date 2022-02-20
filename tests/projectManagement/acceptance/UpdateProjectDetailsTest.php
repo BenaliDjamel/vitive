@@ -7,6 +7,7 @@ use Vitive\projectManagement\domain\Project;
 use Vitive\projectManagement\domain\ProjectRepository;
 use Vitive\projectManagement\domain\vo\ProjectId;
 use Vitive\projectManagement\infrastructure\persistence\MemoryRepository;
+use Tests\projectManagement\common\ProjectFactory;
 
 final class UpdateProjectDetailsTest extends TestCase {
 
@@ -23,18 +24,14 @@ final class UpdateProjectDetailsTest extends TestCase {
         
     }
 
-
-
     /**
      * @test
      */
     public function update_project_details() {
-        $id = "48e42502-79ee-47ac-b085-4571fc0f719c";
 
-        $this->projectRepository->save( Project::create(
-            ProjectId::fromString($id),  "p-1"));
+        $project = $this->projectRepository->save(ProjectFactory::create());
 
-        $project = $this->updateProjectDetails->updateProject(new UpdateProjectRequest($id, "vitive"));
+        $project = $this->updateProjectDetails->updateProject(new UpdateProjectRequest($project->id(), "vitive"));
 
         $this->assertSame('vitive', $project->name);
         
