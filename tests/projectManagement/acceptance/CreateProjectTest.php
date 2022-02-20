@@ -7,7 +7,7 @@ use Vitive\projectManagement\infrastructure\persistence\MemoryRepository;
 
 final class CreateProjectTest extends TestCase { 
 
-    private ProjectRepository $project_repository;
+    private ProjectRepository $projectRepository;
     private CreateProject $createProject;
 
     
@@ -15,8 +15,8 @@ final class CreateProjectTest extends TestCase {
     protected function setUp(): void
     {
 
-        $this->project_repository = new MemoryRepository();
-        $this->createProject = new CreateProject( $this->project_repository);
+        $this->projectRepository = new MemoryRepository();
+        $this->createProject = new CreateProject( $this->projectRepository);
         
     }
 

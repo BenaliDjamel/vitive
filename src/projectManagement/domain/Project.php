@@ -20,6 +20,16 @@ final class Project {
 
     }
 
+    public function updateName(string $name) {
+        if(!trim($name)) {
+            throw new EmptyProjectNameException('Project name cannot be empty.');
+            
+         }
+
+         $this->name = $name;
+
+    }
+
     public function name(): string {
         return $this->name;
     }

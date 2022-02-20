@@ -6,6 +6,7 @@ use Vitive\projectManagement\domain\vo\ProjectId;
 
 interface ProjectRepository {
 
+    public function ofId(ProjectId $id): Project;
     public function save(Project $project): Project;
     public function nextIdentity(): ProjectId;
 }

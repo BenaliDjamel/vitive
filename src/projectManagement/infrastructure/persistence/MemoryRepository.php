@@ -13,6 +13,11 @@ final class MemoryRepository implements ProjectRepository {
 
     private array $projects = [];
 
+    public function ofId(ProjectId $id): Project
+    {
+        return $this->projects[$id->id()];
+    }
+
     public function save(Project $project): Project {
 
         $this->projects[$project->id()] = $project;
