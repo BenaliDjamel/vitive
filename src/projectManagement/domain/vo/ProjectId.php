@@ -1,12 +1,16 @@
 <?php declare(strict_types=1);
 namespace Vitive\projectManagement\domain\vo;
 
+use Assert\Assert;
+
 
 final class ProjectId {
 
     private function __construct(private string $id)
     {
-        
+     
+        Assert::that($id)->uuid();
+
     }
     
 

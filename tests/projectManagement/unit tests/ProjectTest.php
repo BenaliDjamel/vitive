@@ -3,6 +3,8 @@ use PHPUnit\Framework\TestCase;
 use Vitive\projectManagement\domain\EmptyProjectNameException;
 use Vitive\projectManagement\domain\Project;
 use Vitive\projectManagement\domain\vo\ProjectId;
+use Ramsey\Uuid\Uuid;
+
 
 final class ProjectTest extends TestCase
 {
@@ -12,10 +14,12 @@ final class ProjectTest extends TestCase
      */
     public function create_project(): void
     {
-        $project = Project::create(ProjectId::fromString('id-1'), 'p1');
+        $id = $this->createUuid();
+
+        $project = Project::create(ProjectId::fromString($id), 'p1');
 
         $this->assertEquals('p1', $project->name());
-        $this->assertEquals('id-1', $project->id());
+        $this->assertEquals($id, $project->id());
 
     }
 
@@ -26,8 +30,15 @@ final class ProjectTest extends TestCase
     public function create_project_with_empty_name_throws_exception(): void {
        
         $this->expectException(EmptyProjectNameException::class);
-        $project = Project::create(ProjectId::fromString('id-1'), "   ");
 
+        $id = $this->createUuid();
+
+        $project = Project::create(ProjectId::fromString($id), "   ");
+
+    }
+
+    private function createUuid(): string {
+        return Uuid::uuid4()->toString();
     }
 
    
