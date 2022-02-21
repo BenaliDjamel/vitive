@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace Vitive\projectManagement\domain;
 
 use DateTimeImmutable;
+use Vitive\projectManagement\domain\vo\MemberId;
 use Vitive\projectManagement\domain\vo\OwnerId;
 use Vitive\projectManagement\domain\vo\ProjectId;
 
 final class Project
 {
 
-    private function __construct(private ProjectId $projectId,  private string $name, private ?OwnerId $ownerId = null, private ?DateTimeImmutable $dueDate = null)
+    private function __construct(private ProjectId $projectId,  private string $name, private ?OwnerId $ownerId = null, private array $members = [], private ?DateTimeImmutable $dueDate = null)
     {
     }
 
@@ -22,7 +23,7 @@ final class Project
             throw new EmptyProjectNameException('Project name cannot be empty.');
         }
 
-        return new Self($projectId, $name, $ownerId, $dueDate);
+        return new Self($projectId, $name, $ownerId, dueDate: $dueDate);
     }
 
     public function updateName(string $name)
@@ -40,12 +41,22 @@ final class Project
         $this->ownerId = $owner;
     }
 
-    public function owner(): string
+    public function addMember(MemberId $memberId)
     {
-        return $this->ownerId->id();
+        $this->members[] = $memberId;
     }
 
-    public function dueDate(): DateTimeImmutable {
+    public function owner(): ?string
+    {
+        return $this->ownerId?->id();
+    }
+    public function members(): array
+    {
+        return $this->members;
+    }
+
+    public function dueDate(): ?DateTimeImmutable
+    {
         return $this->dueDate;
     }
 

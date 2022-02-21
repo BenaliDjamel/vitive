@@ -1,5 +1,5 @@
 <?php declare(strict_types=1);
-namespace Vitive\projectManagement\application;
+namespace Vitive\projectManagement\application\project;
 
 use Vitive\projectManagement\application\commands\ProjectRequest;
 use Vitive\projectManagement\application\commands\ProjectResponse;

@@ -1,5 +1,5 @@
 <?php declare(strict_types=1);
-namespace Vitive\projectManagement\application;
+namespace Vitive\projectManagement\application\project;
 
 use Exception;
 use UserDoesNotExistException;

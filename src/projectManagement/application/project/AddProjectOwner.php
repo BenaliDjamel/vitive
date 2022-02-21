@@ -1,5 +1,5 @@
 <?php declare(strict_types=1);
-namespace Vitive\projectManagement\application;
+namespace Vitive\projectManagement\application\project;
 
 use UserDoesNotExistException;
 use Vitive\projectManagement\application\commands\AddProjectOwnerRequest;
@@ -23,8 +23,6 @@ final class AddProjectOwner {
         }
 
         $project->addOwner(OwnerId::fromString($request->ownerId));
-    
-
     }
 
 

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
-use Vitive\projectManagement\application\AddProjectOwner;
+use Vitive\projectManagement\application\project\AddProjectOwner;
 use Vitive\projectManagement\application\commands\AddProjectOwnerRequest;
 use Vitive\projectManagement\domain\ProjectRepository;
 use Vitive\projectManagement\infrastructure\persistence\MemoryRepository;

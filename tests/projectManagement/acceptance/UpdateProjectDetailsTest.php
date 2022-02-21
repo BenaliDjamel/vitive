@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use Vitive\projectManagement\application\commands\UpdateProjectRequest;
-use Vitive\projectManagement\application\UpdateProjectDetails;
+use Vitive\projectManagement\application\project\UpdateProjectDetails;
 use Vitive\projectManagement\domain\ProjectRepository;
 use Vitive\projectManagement\infrastructure\persistence\MemoryRepository;
 use Tests\projectManagement\common\ProjectFactory;
