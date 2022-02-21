@@ -12,7 +12,7 @@ final class ProjectTest extends TestCase
      /**
      * @test
      */
-    public function create_project_with_name(): void
+    public function it_create_project_without_an_owner(): void
     {
         $id = $this->createUuid();
 
@@ -27,7 +27,7 @@ final class ProjectTest extends TestCase
      /**
      * @test
      */
-    public function create_project_with_empty_name_throws_exception(): void {
+    public function it_create_project_with_empty_name_throws_exception(): void {
        
         $this->expectException(EmptyProjectNameException::class);
 

@@ -25,7 +25,7 @@ final class CreateProjectTest extends TestCase {
     /**
      * @test
      */
-    public function can_create_a_project() {
+    public function it_create_a_project_without_an_owner() {
 
          $project = $this->createProject->execute(new ProjectRequest( "project-1"));
 

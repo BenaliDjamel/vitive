@@ -15,7 +15,7 @@ final class ProjectFactory {
 
     public static function create(): Project {
        $project =  Project::create(
-            ProjectId::fromString("48e42502-79ee-47ac-b085-4571fc0f719c"),  "p-1", ownerId:null, dueDate:null);
+            ProjectId::fromString("48e42502-79ee-47ac-b085-4571fc0f719c"),  "p-1");
 
         return $project;
     }

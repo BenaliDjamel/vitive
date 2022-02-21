@@ -27,7 +27,7 @@ final class UpdateProjectDetailsTest extends TestCase
     /**
      * @test
      */
-    public function update_project_details()
+    public function it_update_project_name()
     {
 
         $project = $this->projectRepository->save(ProjectFactory::create());
