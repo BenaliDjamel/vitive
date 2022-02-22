@@ -1,0 +1,11 @@
+<!-- config/xml/Product.dcm.xml -->
+<doctrine-mapping xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+      <entity name="Project" table="projects">
+          <field name="name" type="string" />
+          <field name="dueDate" type="datetime" />
+      </entity>
+</doctrine-mapping>

@@ -20,6 +20,7 @@
         "phpunit/phpunit": "^9.5"
     },
     "require": {
+        "doctrine/orm": "^2.11.0",
         "ramsey/uuid": "^4.2",
         "beberlei/assert": "^3.3"
     }
