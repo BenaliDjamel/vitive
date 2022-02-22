@@ -33,7 +33,7 @@ final class ProjectTest extends TestCase
     public function it_create_project_with_empty_name_throws_exception(): void
     {
 
-        $this->expectException(EmptyProjectNameException::class);
+        $this->expectException(DomainException::class);
 
         $id = $this->createUuid();
 
@@ -84,6 +84,7 @@ final class ProjectTest extends TestCase
         $this->assertEquals($ownerId, $project->owner());
         $this->assertEquals($dueDate, $project->dueDate());
     }
+
     /**
      * @test
      */

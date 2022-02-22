@@ -1,24 +1,33 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 namespace Vitive\projectManagement\infrastructure\persistence;
 
-
+use DomainException;
 use Vitive\projectManagement\domain\ProjectRepository;
 use Vitive\projectManagement\domain\Project;
 use Vitive\projectManagement\domain\vo\ProjectId;
 use Ramsey\Uuid\Uuid;
 
 
-final class MemoryRepository implements ProjectRepository {
-  
+final class MemoryRepository implements ProjectRepository
+{
+
 
     private array $projects = [];
 
     public function ofId(ProjectId $id): Project
     {
+        if (!isset($this->projects[$id->id()])) {
+            throw new DomainException("Member does not found");
+        }
+
         return $this->projects[$id->id()];
     }
 
-    public function save(Project $project): Project {
+    public function save(Project $project): Project
+    {
 
         $this->projects[$project->id()] = $project;
 
@@ -29,5 +38,4 @@ final class MemoryRepository implements ProjectRepository {
     {
         return ProjectId::fromString(Uuid::uuid4()->toString());
     }
-
 }

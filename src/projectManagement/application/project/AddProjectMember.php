@@ -7,7 +7,7 @@ namespace Vitive\projectManagement\application\project;
 use UserDoesNotExistException;
 use Vitive\projectManagement\application\commands\AddProjectMemberRequest;
 use Vitive\projectManagement\application\commands\ProjectResponse;
-use Vitive\projectManagement\domain\MemberRepository;
+use Vitive\projectManagement\domain\member\MemberRepository;
 use Vitive\projectManagement\domain\Project;
 use Vitive\projectManagement\domain\ProjectRepository;
 use Vitive\projectManagement\domain\vo\MemberId;
@@ -16,7 +16,7 @@ use Vitive\projectManagement\domain\vo\ProjectId;
 final class AddProjectMember
 {
 
-    public function __construct(private ProjectRepository $projectRepository)
+    public function __construct(private ProjectRepository $projectRepository, private MemberRepository $memberRepository)
     {
     }
 
@@ -24,15 +24,10 @@ final class AddProjectMember
     {
 
         $project = $this->projectRepository->ofId(ProjectId::fromString($request->projectId));
-
-        if (!$project) {
-            throw new UserDoesNotExistException();
-        }
-
-        // check if member exist
+        $member = $this->memberRepository->ofId(MemberId::fromString($request->memberId));
 
         $project->addMember(MemberId::fromString($request->memberId));
 
-        return new ProjectResponse($project->id(), $project->name(), $project->owner(), $project->dueDate() , $project->members());
+        return new ProjectResponse($project->id(), $project->name(), $project->owner(), $project->dueDate(), $project->members());
     }
 }

@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
+use Vitive\projectManagement\application\project\UserDoesNotExistException;
+use Tests\projectManagement\common\MemberFactory;
 use Tests\projectManagement\common\ProjectFactory;
 use Vitive\projectManagement\application\commands\AddProjectMemberRequest;
 use Vitive\projectManagement\application\commands\ProjectResponse;
@@ -18,6 +20,7 @@ final class AddProjectMemberTest extends TestCase
 {
     private ProjectRepository $projectRepository;
     private AddProjectMember $addProjectMember;
+    private MemberRepository $memberRepository;
 
 
 
@@ -25,7 +28,8 @@ final class AddProjectMemberTest extends TestCase
     {
 
         $this->projectRepository = new MemoryRepository();
-        $this->addProjectMember = new AddProjectMember($this->projectRepository);
+        $this->memberRepository = new MemberMemoryRepository();
+        $this->addProjectMember = new AddProjectMember($this->projectRepository, $this->memberRepository);
     }
 
 
@@ -38,7 +42,13 @@ final class AddProjectMemberTest extends TestCase
         $project = ProjectFactory::create();
         $this->projectRepository->save($project);
 
-        $response = $this->addProjectMember->execute(new AddProjectMemberRequest($project->id(), $memberId));
+        /* memberEmail = "djamel@benali.com";
+        $memberFullName = "djamel benali"; */
+        $member = MemberFactory::create();
+        $this->memberRepository->save($member);
+
+
+        $response = $this->addProjectMember->execute(new AddProjectMemberRequest($project->id(), $member->id()));
 
         $this->assertEquals(new ProjectResponse(
             $project->id(),

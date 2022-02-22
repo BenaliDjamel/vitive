@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Vitive\projectManagement\domain;
 
 use DateTimeImmutable;
+use DomainException;
 use Vitive\projectManagement\domain\vo\MemberId;
 use Vitive\projectManagement\domain\vo\OwnerId;
 use Vitive\projectManagement\domain\vo\ProjectId;
@@ -20,7 +21,7 @@ final class Project
     {
 
         if (!trim($name)) {
-            throw new EmptyProjectNameException('Project name cannot be empty.');
+            throw new DomainException('Project name cannot be empty.');
         }
 
         return new Self($projectId, $name, $ownerId, dueDate: $dueDate);
@@ -29,7 +30,7 @@ final class Project
     public function updateName(string $name)
     {
         if (!trim($name)) {
-            throw new EmptyProjectNameException('Project name cannot be empty.');
+            throw new DomainException('Project name cannot be empty.');
         }
 
         $this->name = $name;

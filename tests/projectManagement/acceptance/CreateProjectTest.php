@@ -1,23 +1,26 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 use PHPUnit\Framework\TestCase;
 use Vitive\projectManagement\domain\ProjectRepository;
 use Vitive\projectManagement\application\project\CreateProject;
 use Vitive\projectManagement\application\commands\ProjectRequest;
 use Vitive\projectManagement\infrastructure\persistence\MemoryRepository;
 
-final class CreateProjectTest extends TestCase { 
+final class CreateProjectTest extends TestCase
+{
 
     private ProjectRepository $projectRepository;
     private CreateProject $createProject;
 
-    
+
 
     protected function setUp(): void
     {
 
         $this->projectRepository = new MemoryRepository();
-        $this->createProject = new CreateProject( $this->projectRepository);
-        
+        $this->createProject = new CreateProject($this->projectRepository);
     }
 
 
@@ -25,12 +28,11 @@ final class CreateProjectTest extends TestCase {
     /**
      * @test
      */
-    public function it_create_a_project_without_an_owner() {
+    public function it_create_a_project_without_an_owner()
+    {
 
-         $project = $this->createProject->execute(new ProjectRequest( "project-1"));
+        $project = $this->createProject->execute(new ProjectRequest("project-1"));
 
-         $this->assertEquals('project-1', $project->name);
-
+        $this->assertEquals('project-1', $project->name);
     }
-
 }
