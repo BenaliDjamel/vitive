@@ -14,7 +14,7 @@ use Vitive\projectManagement\domain\ProjectRepository;
 use Vitive\projectManagement\domain\vo\MemberId;
 use Vitive\projectManagement\domain\vo\ProjectId;
 use Vitive\projectManagement\infrastructure\persistence\MemberMemoryRepository;
-use Vitive\projectManagement\infrastructure\persistence\MemoryRepository;
+use Vitive\projectManagement\infrastructure\persistence\ProjectMemoryRepository;
 
 final class AddProjectMemberTest extends TestCase
 {
@@ -27,7 +27,7 @@ final class AddProjectMemberTest extends TestCase
     protected function setUp(): void
     {
 
-        $this->projectRepository = new MemoryRepository();
+        $this->projectRepository = new ProjectMemoryRepository();
         $this->memberRepository = new MemberMemoryRepository();
         $this->addProjectMember = new AddProjectMember($this->projectRepository, $this->memberRepository);
     }

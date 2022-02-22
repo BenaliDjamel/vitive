@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Vitive\projectManagement\domain\ProjectRepository;
 use Vitive\projectManagement\application\project\CreateProject;
 use Vitive\projectManagement\application\commands\ProjectRequest;
-use Vitive\projectManagement\infrastructure\persistence\MemoryRepository;
+use Vitive\projectManagement\infrastructure\persistence\ProjectMemoryRepository;
 
 final class CreateProjectTest extends TestCase
 {
@@ -19,7 +19,7 @@ final class CreateProjectTest extends TestCase
     protected function setUp(): void
     {
 
-        $this->projectRepository = new MemoryRepository();
+        $this->projectRepository = new ProjectMemoryRepository();
         $this->createProject = new CreateProject($this->projectRepository);
     }
 

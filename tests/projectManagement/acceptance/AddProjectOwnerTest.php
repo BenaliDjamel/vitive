@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Vitive\projectManagement\application\project\AddProjectOwner;
 use Vitive\projectManagement\application\commands\AddProjectOwnerRequest;
 use Vitive\projectManagement\domain\ProjectRepository;
-use Vitive\projectManagement\infrastructure\persistence\MemoryRepository;
+use Vitive\projectManagement\infrastructure\persistence\ProjectMemoryRepository;
 use Tests\projectManagement\common\ProjectFactory;
 
 final class AddProjectOwnerTest extends TestCase
@@ -21,7 +21,7 @@ final class AddProjectOwnerTest extends TestCase
     protected function setUp(): void
     {
 
-        $this->projectRepository = new MemoryRepository();
+        $this->projectRepository = new ProjectMemoryRepository();
         $this->addProjectOwner = new AddProjectOwner($this->projectRepository);
     }
 

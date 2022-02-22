@@ -11,7 +11,7 @@ use Vitive\projectManagement\domain\vo\ProjectId;
 use Ramsey\Uuid\Uuid;
 
 
-final class MemoryRepository implements ProjectRepository
+final class ProjectMemoryRepository implements ProjectRepository
 {
 
 

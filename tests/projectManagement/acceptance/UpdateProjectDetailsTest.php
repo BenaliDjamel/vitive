@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Vitive\projectManagement\application\commands\UpdateProjectRequest;
 use Vitive\projectManagement\application\project\UpdateProjectDetails;
 use Vitive\projectManagement\domain\ProjectRepository;
-use Vitive\projectManagement\infrastructure\persistence\MemoryRepository;
+use Vitive\projectManagement\infrastructure\persistence\ProjectMemoryRepository;
 use Tests\projectManagement\common\ProjectFactory;
 
 final class UpdateProjectDetailsTest extends TestCase
@@ -20,7 +20,7 @@ final class UpdateProjectDetailsTest extends TestCase
     protected function setUp(): void
     {
 
-        $this->projectRepository = new MemoryRepository();
+        $this->projectRepository = new ProjectMemoryRepository();
         $this->updateProjectDetails = new UpdateProjectDetails($this->projectRepository);
     }
 
