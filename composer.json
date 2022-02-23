@@ -22,6 +22,9 @@
     "require": {
         "doctrine/orm": "^2.11.0",
         "ramsey/uuid": "^4.2",
-        "beberlei/assert": "^3.3"
+        "beberlei/assert": "^3.3",
+        "ramsey/uuid-doctrine": "^1.8",
+        "doctrine/cache": "^2.1",
+        "symfony/cache": "^6.0"
     }
 }

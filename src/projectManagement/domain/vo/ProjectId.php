@@ -21,6 +21,10 @@ final class ProjectId {
     public function id(): string {
         return $this->id;
     }
+    public function __toString(): string
+	{
+		return $this->id();
+	}
 
 
 }

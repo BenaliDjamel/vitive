@@ -10,7 +10,7 @@ use Vitive\projectManagement\domain\vo\MemberId;
 use Vitive\projectManagement\domain\vo\OwnerId;
 use Vitive\projectManagement\domain\vo\ProjectId;
 
-final class Project
+ class Project
 {
 
     private function __construct(private ProjectId $projectId,  private string $name, private ?OwnerId $ownerId = null, private array $members = [], private ?DateTimeImmutable $dueDate = null)

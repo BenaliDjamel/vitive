@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "00ac6d32d1c279695c6366778441c54e",
+    "content-hash": "cf51f2d8ba1fac8c0b246f7489bcd4b1",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1392,6 +1392,245 @@
             "time": "2021-09-25T23:10:38+00:00"
         },
         {
+            "name": "ramsey/uuid-doctrine",
+            "version": "1.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramsey/uuid-doctrine.git",
+                "reference": "1a6f235ba3faf1cd9ba18daf5b54d8dc9d3bc7d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramsey/uuid-doctrine/zipball/1a6f235ba3faf1cd9ba18daf5b54d8dc9d3bc7d0",
+                "reference": "1a6f235ba3faf1cd9ba18daf5b54d8dc9d3bc7d0",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "^2.5 || ^3.0",
+                "php": "^5.4 || ^7 || ^8",
+                "ramsey/uuid": "^3.5 || ^4"
+            },
+            "require-dev": {
+                "doctrine/orm": "^2.5",
+                "mockery/mockery": "^0.9.11 || ^1",
+                "php-parallel-lint/php-parallel-lint": "^1",
+                "phpunit/phpunit": "^4.8.36 || ^5.7 || ^6.5 || ^7 || ^8 || ^9",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ramsey\\Uuid\\Doctrine\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Ramsey",
+                    "email": "ben@benramsey.com",
+                    "homepage": "https://benramsey.com"
+                }
+            ],
+            "description": "Use ramsey/uuid as a Doctrine field type.",
+            "keywords": [
+                "database",
+                "doctrine",
+                "guid",
+                "identifier",
+                "uuid"
+            ],
+            "support": {
+                "issues": "https://github.com/ramsey/uuid-doctrine/issues",
+                "source": "https://github.com/ramsey/uuid-doctrine/tree/1.8.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/ramsey",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/ramsey/uuid-doctrine",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-01-15T23:54:44+00:00"
+        },
+        {
+            "name": "symfony/cache",
+            "version": "v6.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/cache.git",
+                "reference": "4d2edb87334c1fb2fade9382c70e2284204f0b8b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/cache/zipball/4d2edb87334c1fb2fade9382c70e2284204f0b8b",
+                "reference": "4d2edb87334c1fb2fade9382c70e2284204f0b8b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.2",
+                "psr/cache": "^2.0|^3.0",
+                "psr/log": "^1.1|^2|^3",
+                "symfony/cache-contracts": "^1.1.7|^2|^3",
+                "symfony/service-contracts": "^1.1|^2|^3",
+                "symfony/var-exporter": "^5.4|^6.0"
+            },
+            "conflict": {
+                "doctrine/dbal": "<2.13.1",
+                "symfony/dependency-injection": "<5.4",
+                "symfony/http-kernel": "<5.4",
+                "symfony/var-dumper": "<5.4"
+            },
+            "provide": {
+                "psr/cache-implementation": "2.0|3.0",
+                "psr/simple-cache-implementation": "1.0|2.0|3.0",
+                "symfony/cache-implementation": "1.1|2.0|3.0"
+            },
+            "require-dev": {
+                "cache/integration-tests": "dev-master",
+                "doctrine/dbal": "^2.13.1|^3.0",
+                "predis/predis": "^1.1",
+                "psr/simple-cache": "^1.0|^2.0|^3.0",
+                "symfony/config": "^5.4|^6.0",
+                "symfony/dependency-injection": "^5.4|^6.0",
+                "symfony/filesystem": "^5.4|^6.0",
+                "symfony/http-kernel": "^5.4|^6.0",
+                "symfony/messenger": "^5.4|^6.0",
+                "symfony/var-dumper": "^5.4|^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Cache\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides an extended PSR-6, PSR-16 (and tags) implementation",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "caching",
+                "psr6"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/cache/tree/v6.0.3"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-01-26T17:32:35+00:00"
+        },
+        {
+            "name": "symfony/cache-contracts",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/cache-contracts.git",
+                "reference": "2f7463f156cf9c665d9317e21a809c3bbff5754e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/cache-contracts/zipball/2f7463f156cf9c665d9317e21a809c3bbff5754e",
+                "reference": "2f7463f156cf9c665d9317e21a809c3bbff5754e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.2",
+                "psr/cache": "^3.0"
+            },
+            "suggest": {
+                "symfony/cache-implementation": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "3.0-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Contracts\\Cache\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Generic abstractions related to caching",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "abstractions",
+                "contracts",
+                "decoupling",
+                "interfaces",
+                "interoperability",
+                "standards"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/cache-contracts/tree/v3.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-08-17T15:35:52+00:00"
+        },
+        {
             "name": "symfony/console",
             "version": "v6.0.3",
             "source": {
@@ -2220,6 +2459,78 @@
                 }
             ],
             "time": "2022-01-02T09:55:41+00:00"
+        },
+        {
+            "name": "symfony/var-exporter",
+            "version": "v6.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/var-exporter.git",
+                "reference": "1261b2d4a23081cb2b59a4caa311a5ac43b845b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/1261b2d4a23081cb2b59a4caa311a5ac43b845b6",
+                "reference": "1261b2d4a23081cb2b59a4caa311a5ac43b845b6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.2"
+            },
+            "require-dev": {
+                "symfony/var-dumper": "^5.4|^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\VarExporter\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Allows exporting any serializable PHP data structure to plain PHP code",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "clone",
+                "construct",
+                "export",
+                "hydrate",
+                "instantiate",
+                "serialize"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/var-exporter/tree/v6.0.3"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-01-02T09:55:41+00:00"
         }
     ],
     "packages-dev": [
@@ -2674,16 +2985,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "9.2.11",
+            "version": "9.2.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "665a1ac0a763c51afc30d6d130dac0813092b17f"
+                "reference": "c011a0b6aaa4acd2f39b7f51fb4ad4442b6ec631"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/665a1ac0a763c51afc30d6d130dac0813092b17f",
-                "reference": "665a1ac0a763c51afc30d6d130dac0813092b17f",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/c011a0b6aaa4acd2f39b7f51fb4ad4442b6ec631",
+                "reference": "c011a0b6aaa4acd2f39b7f51fb4ad4442b6ec631",
                 "shasum": ""
             },
             "require": {
@@ -2739,7 +3050,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.11"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.12"
             },
             "funding": [
                 {
@@ -2747,7 +3058,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-02-18T12:46:09+00:00"
+            "time": "2022-02-23T06:30:26+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2992,16 +3303,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.14",
+            "version": "9.5.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "1883687169c017d6ae37c58883ca3994cfc34189"
+                "reference": "dc738383c519243b0a967f63943a848d3fd861aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1883687169c017d6ae37c58883ca3994cfc34189",
-                "reference": "1883687169c017d6ae37c58883ca3994cfc34189",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/dc738383c519243b0a967f63943a848d3fd861aa",
+                "reference": "dc738383c519243b0a967f63943a848d3fd861aa",
                 "shasum": ""
             },
             "require": {
@@ -3017,7 +3328,7 @@
                 "phar-io/version": "^3.0.2",
                 "php": ">=7.3",
                 "phpspec/prophecy": "^1.12.1",
-                "phpunit/php-code-coverage": "^9.2.7",
+                "phpunit/php-code-coverage": "^9.2.12",
                 "phpunit/php-file-iterator": "^3.0.5",
                 "phpunit/php-invoker": "^3.1.1",
                 "phpunit/php-text-template": "^2.0.3",
@@ -3079,7 +3390,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.14"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.15"
             },
             "funding": [
                 {
@@ -3091,7 +3402,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-02-18T12:54:07+00:00"
+            "time": "2022-02-23T08:53:20+00:00"
         },
         {
             "name": "sebastian/cli-parser",

@@ -7,7 +7,7 @@ namespace Vitive\projectManagement\domain\member;
 use DomainException;
 use Vitive\projectManagement\domain\vo\MemberId;
 
-final class Member
+ class Member
 {
 
     private function __construct(private MemberId $memberId, private string $fullname, private string $email)

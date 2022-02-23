@@ -1,11 +1,11 @@
-<!-- config/xml/Product.dcm.xml -->
 <doctrine-mapping xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
       xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-      <entity name="Project" table="projects">
+      <entity name="Vitive\projectManagement\domain\Project" table="projects">
+         <id name="projectId" type="projectId" column="id" /> 
           <field name="name" type="string" />
-          <field name="dueDate" type="datetime" />
+          <field name="dueDate" type="datetimetz_immutable" />
       </entity>
 </doctrine-mapping>
