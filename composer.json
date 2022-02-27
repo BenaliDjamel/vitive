@@ -1,8 +1,35 @@
 {
-    "name": "djamel/vitive",
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.0.2",
+        "beberlei/assert": "^3.3",
+        "fruitcake/laravel-cors": "^2.0.5",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel-doctrine/orm": "^1.8",
+        "laravel/framework": "^9.0",
+        "laravel/sanctum": "^2.14",
+        "laravel/tinker": "^2.7",
+        "ramsey/uuid-doctrine": "^1.8",
+        "symfony/cache": "^6.0"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.9.1",
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^6.1",
+        "phpunit/phpunit": "^9.5.10",
+        "spatie/laravel-ignition": "^1.0"
+    },
     "autoload": {
         "psr-4": {
-            "Vitive\\": "src/"
+            "App\\": "app/",
+            "Vitive\\": "vitive/src",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
@@ -10,21 +37,40 @@
             "Tests\\": "tests/"
         }
     },
-    "authors": [
-        {
-            "name": "Djamel Benali",
-            "email": "djamelbenalidev@gmail.com"
-        }
-    ],
-    "require-dev": {
-        "phpunit/phpunit": "^9.5"
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
     },
-    "require": {
-        "doctrine/orm": "^2.11.0",
-        "ramsey/uuid": "^4.2",
-        "beberlei/assert": "^3.3",
-        "ramsey/uuid-doctrine": "^1.8",
-        "doctrine/cache": "^2.1",
-        "symfony/cache": "^6.0"
-    }
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./vitive/src",
+            "options": {
+                "symlink": true
+            }
+        }
+    ]
 }
