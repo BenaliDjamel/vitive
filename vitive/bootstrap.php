@@ -28,7 +28,6 @@ $conn = array(
 Type::addType('projectId', ProjectIdType::class);
 Type::addType('memberId', MemberIdType::class);
 
-
 // obtaining the entity manager
 $entityManager = EntityManager::create($conn, $config);
 

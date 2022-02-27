@@ -1,6 +1,7 @@
 <?php
 
 use Vitive\projectManagement\infrastructure\persistence\doctrine\type\ProjectIdType;
+use Vitive\projectManagement\infrastructure\persistence\doctrine\type\UUID;
 
 return [
 
@@ -116,7 +117,7 @@ return [
     |--------------------------------------------------------------------------
     */
     'custom_types'               => [
-        'projectId' =>  ProjectIdType::class
+        'uuid' =>  UUID::class
     ],
     /*
     |--------------------------------------------------------------------------

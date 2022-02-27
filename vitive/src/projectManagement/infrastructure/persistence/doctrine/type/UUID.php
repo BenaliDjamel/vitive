@@ -4,11 +4,10 @@ namespace Vitive\projectManagement\infrastructure\persistence\doctrine\type;
 
 use Ramsey\Uuid\Doctrine\UuidType;
 use Doctrine\DBAL\Types\ConversionException;
-use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Vitive\projectManagement\domain\vo\MemberId;
+use Vitive\projectManagement\domain\vo\ProjectId;
 
-final class MemberIdType extends UuidType
+final class UUID extends UuidType
 {
     const NAME = 'uuid';
     
@@ -17,11 +16,11 @@ final class MemberIdType extends UuidType
         if (empty($value)) {
             return null;
         }
-        if ($value instanceof MemberId) {
+        if ($value instanceof ProjectId) {
             return $value;
         }
         try {
-            return MemberId::fromString($value);
+            return ProjectId::fromString($value);
         } catch (\Exception $ex) {
             throw ConversionException::conversionFailed($value, self::NAME);
         }
@@ -32,7 +31,7 @@ final class MemberIdType extends UuidType
         if (null === $value) {
             return null;
         }
-        if ($value instanceof MemberId) {
+        if ($value instanceof ProjectId) {
             return $value->id();
         }
         throw ConversionException::conversionFailed($value, self::NAME);
