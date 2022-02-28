@@ -31,6 +31,7 @@ final class UpdateProjectDetails
         $project->updateName($request->name);
 
         // update repository depends on orm library
+        $this->projectRepository->update();
 
         return new UpdateProjectResponse($project->id(), $project->name());
     }

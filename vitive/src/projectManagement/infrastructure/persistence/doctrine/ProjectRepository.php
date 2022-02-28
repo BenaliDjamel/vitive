@@ -23,7 +23,7 @@ class ProjectRepository implements ProjectRepositoryInterface
 
     public function ofId(ProjectId $id): Project
     {
-        $project = $this->repository->findOneBy(['id' => $id->id()]);
+        $project = $this->repository->findOneBy(['projectId' => $id->id()]);
 		if (is_null($project)) {
 			throw new \Exception('Project not found');
 		}
@@ -36,6 +36,10 @@ class ProjectRepository implements ProjectRepositoryInterface
         $this->entityManager->persist($project);
 		$this->entityManager->flush();
         return $project;
+    }
+
+    public function update() {
+        $this->entityManager->flush();
     }
 
     public function nextIdentity(): ProjectId

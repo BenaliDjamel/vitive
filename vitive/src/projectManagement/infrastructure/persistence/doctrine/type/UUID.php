@@ -10,7 +10,7 @@ use Vitive\projectManagement\domain\vo\ProjectId;
 final class UUID extends UuidType
 {
     const NAME = 'uuid';
-    
+
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         if (empty($value)) {
@@ -34,6 +34,11 @@ final class UUID extends UuidType
         if ($value instanceof ProjectId) {
             return $value->id();
         }
+
+        if (!empty($value)) {
+            return $value;
+        }
+
         throw ConversionException::conversionFailed($value, self::NAME);
     }
 

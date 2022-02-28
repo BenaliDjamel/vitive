@@ -10,11 +10,8 @@ use Vitive\projectManagement\application\project\CreateProject;
 class ProjectController extends Controller
 {
 
-    private  $createProject;
-
-    public function __construct(CreateProject $createProject)
+    public function __construct(private CreateProject $createProject)
     {
-        $this->createProject =  $createProject;
     }
 
 
