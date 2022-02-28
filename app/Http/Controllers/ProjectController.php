@@ -20,8 +20,19 @@ class ProjectController extends Controller
 
     public function store(Request $request)
     {
+        $project =  $this->createProject->execute(
+            new ProjectRequest(
+                $request->name,
+                dueDate: new DateTimeImmutable()
+            )
+        );
 
-        $project=  $this->createProject->execute(new ProjectRequest('asana', dueDate:new DateTimeImmutable()));
-        return json_encode($project->id);
+        return response()->json([
+            'id' => $project->id,
+            'name' => $project->name,
+            'dueDate' => $project->dueDate,
+            'owner' => $project->owner,
+            'members' => $project->members
+        ]);
     }
 }
