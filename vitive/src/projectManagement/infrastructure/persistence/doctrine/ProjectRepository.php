@@ -12,33 +12,40 @@ class ProjectRepository implements ProjectRepositoryInterface
 {
 
     private $entityManager;
-	private $repository;
+    private $repository;
 
-	public function __construct(EntityManager $entityManager)
-	{
-		$this->entityManager = $entityManager;
-		$this->repository = $entityManager->getRepository(Project::class);
-	}
+    public function __construct(EntityManager $entityManager)
+    {
+        $this->entityManager = $entityManager;
+        $this->repository = $entityManager->getRepository(Project::class);
+    }
 
 
     public function ofId(ProjectId $id): Project
     {
         $project = $this->repository->findOneBy(['projectId' => $id->id()]);
-		if (is_null($project)) {
-			throw new \Exception('Project not found');
-		}
+        if (is_null($project)) {
+            throw new \Exception('Project not found');
+        }
 
-		return $project;
+        return $project;
     }
 
     public function save(Project $project): Project
     {
         $this->entityManager->persist($project);
-		$this->entityManager->flush();
+        $this->entityManager->flush();
         return $project;
     }
 
-    public function update() {
+    public function update()
+    {
+        $this->entityManager->flush();
+    }
+
+    public function remove(Project $project)
+    {
+        $this->entityManager->remove($project);
         $this->entityManager->flush();
     }
 

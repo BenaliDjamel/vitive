@@ -20,7 +20,7 @@ final class ProjectMemoryRepository implements ProjectRepository
     public function ofId(ProjectId $id): Project
     {
         if (!isset($this->projects[$id->id()])) {
-            throw new DomainException("Member does not found");
+            throw new DomainException("Project does not found");
         }
 
         return $this->projects[$id->id()];
@@ -39,7 +39,13 @@ final class ProjectMemoryRepository implements ProjectRepository
         return ProjectId::fromString(Uuid::uuid4()->toString());
     }
 
-    public function update() {
-        
+    public function update()
+    {
+    }
+
+    public function remove(Project $project)
+    {
+
+        unset($this->projects[$project->id()]);
     }
 }

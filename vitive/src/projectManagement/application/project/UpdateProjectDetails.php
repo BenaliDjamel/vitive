@@ -22,7 +22,9 @@ final class UpdateProjectDetails
 
     public function execute(UpdateProjectRequest $request): UpdateProjectResponse
     {
-        $project = $this->projectRepository->ofId(ProjectId::fromString($request->id));
+        $id = ProjectId::fromString($request->id);
+
+        $project = $this->projectRepository->ofId($id);
 
         if (!$project) {
             throw new DomainException("Project does not found.");
@@ -30,7 +32,7 @@ final class UpdateProjectDetails
 
         $project->updateName($request->name);
 
-        // update repository depends on orm library
+        // this will flush the repository so persist changes to DB
         $this->projectRepository->update();
 
         return new UpdateProjectResponse($project->id(), $project->name());

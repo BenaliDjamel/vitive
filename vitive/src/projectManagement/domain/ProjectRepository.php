@@ -14,4 +14,5 @@ interface ProjectRepository
     public function save(Project $project): Project;
     public function nextIdentity(): ProjectId;
     public function update();
+    public function remove(Project $project);
 }
