@@ -1,7 +1,7 @@
 <?php
 
+use Vitive\projectManagement\infrastructure\persistence\doctrine\type\MemberIdType;
 use Vitive\projectManagement\infrastructure\persistence\doctrine\type\ProjectIdType;
-use Vitive\projectManagement\infrastructure\persistence\doctrine\type\UUID;
 
 return [
 
@@ -34,7 +34,7 @@ return [
             'connection'    => env('DB_CONNECTION', 'sqlite'),
             'namespaces'    => [],
             'paths'         => [
-               //base_path('vitive/src/projectManagement/domain'),
+                //base_path('vitive/src/projectManagement/domain'),
                 base_path('vitive/src/projectManagement/infrastructure/persistence/doctrine/mapping'),
 
             ],
@@ -80,9 +80,7 @@ return [
             | https://symfony.com/doc/current/doctrine/dbal.html#registering-custom-mapping-types-in-the-schematool
             |--------------------------------------------------------------------------
             */
-            'mapping_types' => [
-             
-            ]
+            'mapping_types' => []
         ]
     ],
     /*
@@ -117,7 +115,8 @@ return [
     |--------------------------------------------------------------------------
     */
     'custom_types'               => [
-        'uuid' =>  UUID::class
+        'projectId' =>  ProjectIdType::class,
+        'memberId' => MemberIdType::class
     ],
     /*
     |--------------------------------------------------------------------------

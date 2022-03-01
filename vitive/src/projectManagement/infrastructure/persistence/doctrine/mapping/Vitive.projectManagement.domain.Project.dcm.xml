@@ -4,7 +4,7 @@
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
       <entity name="Vitive\projectManagement\domain\Project" table="projects">
-         <id name="projectId" type="uuid" column="id" /> 
+         <id name="projectId" type="projectId" column="id" /> 
           <field name="name" type="string" />
           <field name="dueDate" type="datetimetz_immutable" column="due_date"/>
       </entity>

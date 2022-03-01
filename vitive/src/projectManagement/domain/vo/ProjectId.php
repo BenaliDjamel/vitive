@@ -1,30 +1,32 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 namespace Vitive\projectManagement\domain\vo;
 
 use Assert\Assert;
 
-
-final class ProjectId {
+final class ProjectId 
+{
 
     private function __construct(private string $id)
     {
-     
+
         Assert::that($id)->uuid();
-
     }
-    
 
-    public static function fromString(string $id): Self {
+    public static function fromString(string $id): Self
+    {
         return new Self($id);
     }
 
-    public function id(): string {
+    public function id(): string
+    {
         return $this->id;
     }
+
     public function __toString(): string
-	{
-		return $this->id();
-	}
-
-
+    {
+        return $this->id();
+    }
 }

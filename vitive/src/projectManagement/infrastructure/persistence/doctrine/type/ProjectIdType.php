@@ -7,7 +7,7 @@ use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Vitive\projectManagement\domain\vo\ProjectId;
 
-final class UUID extends UuidType
+final class ProjectIdType extends UuidType
 {
     const NAME = 'uuid';
 
@@ -16,9 +16,9 @@ final class UUID extends UuidType
         if (empty($value)) {
             return null;
         }
-        if ($value instanceof ProjectId) {
+        /* if ($value instanceof ProjectId) {
             return $value;
-        }
+        } */
         try {
             return ProjectId::fromString($value);
         } catch (\Exception $ex) {

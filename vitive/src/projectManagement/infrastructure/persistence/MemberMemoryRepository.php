@@ -38,4 +38,8 @@ final class MemberMemoryRepository implements MemberRepository
     {
         return MemberId::fromString(Uuid::uuid4()->toString());
     }
+    
+    public function update() {
+        
+    }
 }
