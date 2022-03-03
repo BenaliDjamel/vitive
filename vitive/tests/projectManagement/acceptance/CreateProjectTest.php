@@ -23,8 +23,6 @@ final class CreateProjectTest extends TestCase
         $this->createProject = new CreateProject($this->projectRepository);
     }
 
-
-
     /**
      * @test
      */

@@ -3,11 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use EntityManager;
-use Vitive\projectManagement\domain\Project;
 use Vitive\projectManagement\domain\ProjectRepository;
+use Vitive\projectManagement\domain\user\UserRepository;
 use Vitive\projectManagement\infrastructure\persistence\doctrine\ProjectRepository as DoctrineProjectRepository;
-
+use Vitive\projectManagement\infrastructure\persistence\doctrine\UserRepository as DoctrineUserRepository;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -22,6 +21,12 @@ class AppServiceProvider extends ServiceProvider
                 app('em')
             );
         });
+        $this->app->bind(UserRepository::class, function(){
+            return new DoctrineUserRepository(
+                app('em')
+            );
+        });
+
 
     }
 

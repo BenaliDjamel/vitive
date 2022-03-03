@@ -1,7 +1,9 @@
 <?php
 
+use Vitive\projectManagement\infrastructure\persistence\doctrine\type\EmailAddressType;
 use Vitive\projectManagement\infrastructure\persistence\doctrine\type\MemberIdType;
 use Vitive\projectManagement\infrastructure\persistence\doctrine\type\ProjectIdType;
+use Vitive\projectManagement\infrastructure\persistence\doctrine\type\UserIdType;
 
 return [
 
@@ -116,7 +118,9 @@ return [
     */
     'custom_types'               => [
         'projectId' =>  ProjectIdType::class,
-        'memberId' => MemberIdType::class
+        'memberId' => MemberIdType::class,
+        'userId' => UserIdType::class,
+        'email' => EmailAddressType::class
     ],
     /*
     |--------------------------------------------------------------------------

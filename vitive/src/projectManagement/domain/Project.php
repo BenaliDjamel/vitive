@@ -10,7 +10,7 @@ use Vitive\projectManagement\domain\vo\MemberId;
 use Vitive\projectManagement\domain\vo\OwnerId;
 use Vitive\projectManagement\domain\vo\ProjectId;
 
- class Project
+class Project
 {
 
     private function __construct(private ProjectId $projectId,  private string $name, private ?OwnerId $ownerId = null, private array $members = [], private ?DateTimeImmutable $dueDate = null)
@@ -19,19 +19,15 @@ use Vitive\projectManagement\domain\vo\ProjectId;
 
     public static function create(ProjectId $projectId, string $name, ?OwnerId $ownerId = null, ?DateTimeImmutable $dueDate = null): Self
     {
-
-        if (!trim($name)) {
-            throw new DomainException('Project name cannot be empty.');
-        }
+        Self::assertNonEmptyName($name);
 
         return new Self($projectId, $name, $ownerId, dueDate: $dueDate);
     }
 
     public function updateName(string $name)
     {
-        if (!trim($name)) {
-            throw new DomainException('Project name cannot be empty.');
-        }
+
+        Self::assertNonEmptyName($name);
 
         $this->name = $name;
     }
@@ -47,6 +43,14 @@ use Vitive\projectManagement\domain\vo\ProjectId;
         $this->members[] = $memberId;
     }
 
+    private static function assertNonEmptyName(string $name)
+    {
+        $name = trim($name);
+
+        if (!$name) {
+            throw new DomainException('Project should not be empty.');
+        }
+    }
     public function owner(): ?string
     {
         return $this->ownerId?->id();

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\UpdateProjectController;
 use App\Http\Controllers\DeleteProjectController;
-
+use App\Http\Controllers\SignUpUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +23,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::post('projects/create', [ProjectController::class, 'store']);
 
+Route::post('projects/create', [ProjectController::class, 'store']);
 Route::put('projects/{id}', UpdateProjectController::class);
 Route::delete('projects/{id}', DeleteProjectController::class);
+
+Route::post('signup', SignUpUserController::class);
+
