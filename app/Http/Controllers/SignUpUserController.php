@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SignupRequest;
 use Illuminate\Http\Request;
 use Vitive\projectManagement\application\commands\user\SignUpUserRequest;
-use Vitive\projectManagement\application\commands\user\UserResponse;
 use Vitive\projectManagement\application\user\SignUpUser;
 
 class SignUpUserController extends Controller
@@ -21,7 +21,7 @@ class SignUpUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function __invoke(SignupRequest $request)
     {
         $user = $this->signupUser->execute(new SignUpUserRequest(
             $request->fullname,
