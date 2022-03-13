@@ -30,7 +30,7 @@ final class SignUpUserTest extends TestCase
     {
         $response = $this->signup_a_user();
 
-        $this->assertEquals("djamel@benali.com", $response->email);
+        $this->assertEquals("djamel@benali.com", $response->email());
     }
 
     /**
