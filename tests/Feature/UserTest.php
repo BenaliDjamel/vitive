@@ -100,4 +100,26 @@ class UserTest extends TestCase
         $this->assertAuthenticated();
         $response->assertNoContent();
     }
+
+    public function test_users_can_not_authenticate_with_invalid_password()
+    {
+        $user = entity('Vitive\projectManagement\domain\user\User')->create();
+
+        $this->post('/login', [
+            'email' => $user->email(),
+            'password' => 'wrong-password',
+        ]);
+
+        $this->assertGuest();
+    }
+
+    /**
+     * @test
+     */
+    public function logout_user()
+    {
+        $response = $this->postJson('/logout');
+
+        $this->assertGuest();
+    }
 }
