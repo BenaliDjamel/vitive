@@ -27,21 +27,6 @@ class UserTest extends TestCase
     /**
      * @test
      */
-    public function it_signup_a_user()
-    {
-        $response = $this->signupUser();
-
-        $response->assertStatus(200);
-
-        $this->assertDatabaseHas('users', [
-            'email' => 'djamel@benali.com',
-            'fullname' => 'djamel benali'
-        ]);
-    }
-
-    /**
-     * @test
-     */
     public function already_existing_email_should_throw_an_exception()
     {
 
@@ -69,7 +54,7 @@ class UserTest extends TestCase
         $this->signupUser(fullname: "d");
     }
 
-     /**
+    /**
      * @test
      */
     public function fullname_more_than_twenty_characters_throw_an_exception()
@@ -81,24 +66,38 @@ class UserTest extends TestCase
     /**
      * @test
      */
-    public function register_user() {
-         $fullname = "djamel benali";
-         $email = "djamel@benali.com";
-         $password = "aa12345678";
-
-        $response = $this->withoutExceptionHandling()->postJson('/register', [
-            "fullname" => $fullname,
-            "email" => $email,
-            "password" => $password,
-            'password_confirmation' => $password
+    public function register_user()
+    {
+        $response = $this->postJson('/register', [
+            'fullname' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => 'password',
+            'password_confirmation' => 'password',
         ]);
 
-
-        $response->assertStatus(204);
+        $this->assertAuthenticated();
+        $response->assertNoContent();
 
         $this->assertDatabaseHas('users', [
-            'email' => 'djamel@benali.com',
-            'fullname' => 'djamel benali'
+            'email' => 'test@example.com',
+            'fullname' => 'Test User'
         ]);
+    }
+
+    /**
+     * @test
+     */
+    public function login_user()
+    {
+
+        $user = entity('Vitive\projectManagement\domain\user\User')->create();
+
+        $response = $this->postJson('/login', [
+            'email' => $user->email(),
+            'password' => 'password',
+        ]);
+
+        $this->assertAuthenticated();
+        $response->assertNoContent();
     }
 }

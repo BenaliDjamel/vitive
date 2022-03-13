@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\DeleteProjectController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SignUpUserController;
+use App\Http\Controllers\UpdateProjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +21,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::post('projects/create', [ProjectController::class, 'store']);
+Route::put('projects/{id}', UpdateProjectController::class);
+Route::delete('projects/{id}', DeleteProjectController::class);
+
+Route::post('signup', SignUpUserController::class);

@@ -30,9 +30,9 @@ class SignUpUserController extends Controller
         ));
    
         return response()->json([
-            'id' => $user->id,
-            'fullname' => $user->fullname,
-            'email' => $user->email,
+            'id' => $user->id(),
+            'fullname' => $user->fullname(),
+            'email' => $user->email(),
         ]);
     }
 }
