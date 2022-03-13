@@ -77,4 +77,28 @@ class UserTest extends TestCase
         $this->expectException(ValidationException::class);
         $this->signupUser(fullname: "ddddddddddddddddddddd");
     }
+
+    /**
+     * @test
+     */
+    public function register_user() {
+         $fullname = "djamel benali";
+         $email = "djamel@benali.com";
+         $password = "aa12345678";
+
+        $response = $this->withoutExceptionHandling()->postJson('/register', [
+            "fullname" => $fullname,
+            "email" => $email,
+            "password" => $password,
+            'password_confirmation' => $password
+        ]);
+
+
+        $response->assertStatus(204);
+
+        $this->assertDatabaseHas('users', [
+            'email' => 'djamel@benali.com',
+            'fullname' => 'djamel benali'
+        ]);
+    }
 }

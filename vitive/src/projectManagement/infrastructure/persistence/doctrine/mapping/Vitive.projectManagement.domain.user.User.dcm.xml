@@ -7,6 +7,6 @@
          <id name="userId" type="userId" column="id" /> 
           <field name="fullname" type="string" />
           <field name="email" type="email" column="email"/>
-          <field name="password" column="password"/>
+          <field name="password" column="password" type="string"/>
       </entity>
 </doctrine-mapping>

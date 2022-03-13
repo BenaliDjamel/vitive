@@ -9,8 +9,12 @@ use Vitive\projectManagement\domain\vo\UserId;
 use Vitive\projectManagement\domain\vo\EmailAddress;
 use Assert\Assert;
 
-class User
+class User implements \Illuminate\Contracts\Auth\Authenticatable
 {
+
+    use \LaravelDoctrine\ORM\Auth\Authenticatable;
+
+
     private function __construct(private UserId $userId, private string $fullname, private EmailAddress $email, private string $password)
     {
     }
@@ -18,8 +22,8 @@ class User
     public static function create(UserId $id, string $fullname, EmailAddress $email, string $password): Self
     {
         $password = trim($password);
-       
-        if(mb_strlen($password) < 8) {
+
+        if (mb_strlen($password) < 8) {
             throw new DomainException('Password should at least 8 characters');
         }
 
@@ -40,4 +44,10 @@ class User
     {
         return $this->userId->id();
     }
+
+    public function getAuthIdentifierName()
+    {
+        return 'userId';
+    }
+
 }

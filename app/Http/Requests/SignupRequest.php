@@ -33,7 +33,7 @@ class SignupRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'email:rfc,dns', 'unique:Vitive\projectManagement\domain\user\User'],
+            'email' => ['required', 'email', 'unique:Vitive\projectManagement\domain\user\User'],
             'fullname' => ['required', 'min:2', 'max:20'],
             'password' => ['required', 'min:8', 'max:20']
         ];

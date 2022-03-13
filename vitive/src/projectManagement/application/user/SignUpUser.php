@@ -18,7 +18,7 @@ final class SignUpUser
     {
     }
 
-    public function execute(SignUpUserRequest $request): UserResponse
+    public function execute(SignUpUserRequest $request)
     {
         $email = EmailAddress::fromString($request->email);
 
@@ -36,6 +36,8 @@ final class SignUpUser
         );
         $this->userRepository->save($user);
 
-        return new UserResponse($user->id(), $user->fullname(), $user->email());
+        return $user;
+
+     //   return new UserResponse($user->id(), $user->fullname(), $user->email());
     }
 }

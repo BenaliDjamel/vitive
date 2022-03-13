@@ -60,16 +60,30 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        /* 'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
-        ],
+        ], */
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+         /* 'users' => [
+             'driver' => 'database',
+             'table' => 'users',
+         ], */
+
+
+           'users' => [
+             'driver' => 'doctrine',
+             'model' => Vitive\projectManagement\domain\user\User::class,
+         ], 
+
+         
+
+
     ],
+
+
+    /* 'driver' => 'doctrine',
+    'model' => Vitive\projectManagement\domain\user\User::class, */
 
     /*
     |--------------------------------------------------------------------------
