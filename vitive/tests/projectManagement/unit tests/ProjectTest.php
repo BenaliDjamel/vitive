@@ -9,6 +9,7 @@ use Vitive\projectManagement\domain\vo\ProjectId;
 use Ramsey\Uuid\Uuid;
 use Vitive\projectManagement\domain\vo\MemberId;
 use Vitive\projectManagement\domain\vo\OwnerId;
+use Vitive\projectManagement\domain\vo\UserId;
 
 final class ProjectTest extends TestCase
 {
@@ -63,7 +64,7 @@ final class ProjectTest extends TestCase
         $ownerId = $this->createUuid();
         $project = Project::create(ProjectId::fromString($id), "p1");
 
-        $project->addOwner(OwnerId::fromString($ownerId));
+        $project->addOwner(UserId::fromString($ownerId));
 
         $this->assertSame($ownerId, $project->owner());
     }
@@ -77,7 +78,7 @@ final class ProjectTest extends TestCase
         $ownerId = $this->createUuid();
         $dueDate = new DateTimeImmutable('2022-02-25');
 
-        $project = Project::create(ProjectId::fromString($id), 'p1', OwnerId::fromString($ownerId), $dueDate);
+        $project = Project::create(ProjectId::fromString($id), 'p1', UserId::fromString($ownerId), $dueDate);
 
         $this->assertEquals('p1', $project->name());
         $this->assertEquals($id, $project->id());

@@ -4,8 +4,10 @@
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
+use Vitive\projectManagement\infrastructure\persistence\doctrine\type\EmailAddressType;
 use Vitive\projectManagement\infrastructure\persistence\doctrine\type\MemberIdType;
 use Vitive\projectManagement\infrastructure\persistence\doctrine\type\ProjectIdType;
+use Vitive\projectManagement\infrastructure\persistence\doctrine\type\UserIdType;
 
 require_once "vendor/autoload.php";
 
@@ -26,6 +28,8 @@ $conn = array(
 );
 
 Type::addType('projectId', ProjectIdType::class);
+Type::addType('userId', UserIdType::class);
+Type::addType('email', EmailAddressType::class);
 Type::addType('memberId', MemberIdType::class);
 
 // obtaining the entity manager

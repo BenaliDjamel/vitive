@@ -6,6 +6,7 @@
       <entity name="Vitive\projectManagement\domain\Project" table="projects">
          <id name="projectId" type="projectId" column="id" /> 
           <field name="name" type="string" />
+          <field name="ownerId" type="userId" column="owner"/>
           <field name="dueDate" type="datetimetz_immutable" column="due_date"/>
       </entity>
 </doctrine-mapping>

@@ -12,6 +12,7 @@ use Vitive\projectManagement\domain\ProjectRepository;
 use Vitive\projectManagement\domain\Project;
 use Vitive\projectManagement\domain\vo\OwnerId;
 use Vitive\projectManagement\domain\vo\ProjectId;
+use Vitive\projectManagement\domain\vo\UserId;
 
 final class AddProjectOwner
 {
@@ -30,7 +31,7 @@ final class AddProjectOwner
             throw new DomainException("Project does not found.");
         }
 
-        $project->addOwner(OwnerId::fromString($request->ownerId));
+        $project->addOwner(UserId::fromString($request->ownerId));
 
         $this->projectRepository->update();
 

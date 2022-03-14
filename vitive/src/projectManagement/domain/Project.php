@@ -9,15 +9,16 @@ use DomainException;
 use Vitive\projectManagement\domain\vo\MemberId;
 use Vitive\projectManagement\domain\vo\OwnerId;
 use Vitive\projectManagement\domain\vo\ProjectId;
+use Vitive\projectManagement\domain\vo\UserId;
 
 class Project
 {
 
-    private function __construct(private ProjectId $projectId,  private string $name, private ?OwnerId $ownerId = null, private array $members = [], private ?DateTimeImmutable $dueDate = null)
+    private function __construct(private ProjectId $projectId,  private string $name, private ?UserId $ownerId = null, private array $members = [], private ?DateTimeImmutable $dueDate = null)
     {
     }
 
-    public static function create(ProjectId $projectId, string $name, ?OwnerId $ownerId = null, ?DateTimeImmutable $dueDate = null): Self
+    public static function create(ProjectId $projectId, string $name, ?UserId $ownerId = null, ?DateTimeImmutable $dueDate = null): Self
     {
         Self::assertNonEmptyName($name);
 
@@ -32,7 +33,7 @@ class Project
         $this->name = $name;
     }
 
-    public function addOwner(OwnerId $owner)
+    public function addOwner(UserId $owner)
     {
 
         $this->ownerId = $owner;
