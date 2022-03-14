@@ -80,4 +80,29 @@ class ProjectTest extends TestCase
             'id' => $project->id(),
         ]);
     }
+
+    /**
+     * @test
+     */
+    public function it_add_an_owner_to_a_project()
+    {
+        $user = entity('Vitive\projectManagement\domain\user\User')->create();
+
+        Sanctum::actingAs( $user);
+
+        $project = entity('Vitive\projectManagement\domain\Project')->create();
+
+        $response = $this->putJson("/api/projects/{$project->id()}/changeOwner" , [
+            'ownerId' =>  $user->id()
+        ]);
+
+        $response->assertStatus(200)
+        ->assertExactJson([
+            'id' => $response['id'],
+            'name' => $response['name'],
+            'dueDate' => $response['dueDate'],
+            'owner' => $response['owner'],
+        ]);
+
+    }
 }

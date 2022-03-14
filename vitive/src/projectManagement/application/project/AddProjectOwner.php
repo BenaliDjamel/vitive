@@ -31,5 +31,9 @@ final class AddProjectOwner
         }
 
         $project->addOwner(OwnerId::fromString($request->ownerId));
+
+        $this->projectRepository->update();
+
+        return $project;
     }
 }

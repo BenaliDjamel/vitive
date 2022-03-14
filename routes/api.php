@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\ChangeProjectOwnerController;
 use App\Http\Controllers\DeleteProjectController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SignUpUserController;
 use App\Http\Controllers\UpdateProjectController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +22,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::post('projects/create', [ProjectController::class, 'store']);
     Route::put('projects/{id}', UpdateProjectController::class);
+    Route::put('projects/{id}/changeOwner', ChangeProjectOwnerController::class);
     Route::delete('projects/{id}', DeleteProjectController::class);
 
 });
