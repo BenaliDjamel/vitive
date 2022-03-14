@@ -7,12 +7,12 @@ namespace Vitive\projectManagement\domain\user;
 use DomainException;
 use Vitive\projectManagement\domain\vo\UserId;
 use Vitive\projectManagement\domain\vo\EmailAddress;
-use Assert\Assert;
-
+use Laravel\Sanctum\HasApiTokens;
 class User implements \Illuminate\Contracts\Auth\Authenticatable
 {
 
     use \LaravelDoctrine\ORM\Auth\Authenticatable;
+    use HasApiTokens;
 
 
     private function __construct(private UserId $userId, private string $fullname, private EmailAddress $email, private string $password)

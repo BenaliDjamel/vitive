@@ -48,7 +48,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function configureRateLimiting()
     {
         RateLimiter::for('api', function (Request $request) {
-            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+            // here we are using User entity not elequonet model
+            return Limit::perMinute(60)->by($request->user()?->id()?: $request->ip());
         });
     }
 }

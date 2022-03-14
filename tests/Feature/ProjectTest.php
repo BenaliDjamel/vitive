@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class ProjectTest extends TestCase
@@ -15,6 +16,11 @@ class ProjectTest extends TestCase
      */
     public function it_create_a_project_without_an_owner()
     {
+        Sanctum::actingAs(
+            entity('Vitive\projectManagement\domain\user\User')->create()
+        );
+
+
         $response = $this->postJson(
             '/api/projects/create',
             ['name' => 'asana-cl']
@@ -36,6 +42,9 @@ class ProjectTest extends TestCase
      */
     public function it_update_project_name()
     {
+        Sanctum::actingAs(
+            entity('Vitive\projectManagement\domain\user\User')->create()
+        );
 
         $project = entity('Vitive\projectManagement\domain\Project')->create();
 
@@ -58,6 +67,9 @@ class ProjectTest extends TestCase
      */
     public function it_deletes_a_project()
     {
+        Sanctum::actingAs(
+            entity('Vitive\projectManagement\domain\user\User')->create()
+        );
 
         $project = entity('Vitive\projectManagement\domain\Project')->create();
 
