@@ -51,10 +51,12 @@ class Project
             throw new DomainException('Project should not be empty.');
         }
     }
+
     public function owner(): ?string
     {
         return $this->ownerId?->id();
     }
+
     public function members(): array
     {
         return $this->members;
