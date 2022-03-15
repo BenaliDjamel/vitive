@@ -5,8 +5,17 @@
 
       <entity name="Vitive\projectManagement\domain\Project" table="projects">
          <id name="projectId" type="projectId" column="id" /> 
+
           <field name="name" type="string" />
-          <field name="ownerId" type="userId" column="owner"/>
+
+          <one-to-one field="ownerId" target-entity="Vitive\projectManagement\domain\user\User">
+            <join-column name="owner" referenced-column-name="id" />
+        </one-to-one>
+
+        <many-to-one field="creator" target-entity="Vitive\projectManagement\domain\user\User" inversed-by="projects">
+            <join-column name="user_id" referenced-column-name="id" />
+        </many-to-one>
+
           <field name="dueDate" type="datetimetz_immutable" column="due_date"/>
       </entity>
 </doctrine-mapping>

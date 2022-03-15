@@ -8,19 +8,32 @@ use DomainException;
 use Vitive\projectManagement\domain\vo\UserId;
 use Vitive\projectManagement\domain\vo\EmailAddress;
 use Laravel\Sanctum\HasApiTokens;
-class User implements \Illuminate\Contracts\Auth\Authenticatable
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vitive\projectManagement\domain\Project;
+
+class User // implements \Illuminate\Contracts\Auth\Authenticatable
 {
 
-    use \LaravelDoctrine\ORM\Auth\Authenticatable;
-    use HasApiTokens;
+ /*    use \LaravelDoctrine\ORM\Auth\Authenticatable;
+    use HasApiTokens; */
 
 
-    private function __construct(private UserId $userId, private string $fullname, private EmailAddress $email, private string $password)
-    {
+    private function __construct(
+        private UserId $userId,
+        private string $fullname,
+        private EmailAddress $email,
+        private string $password,
+        private Collection $projects = new ArrayCollection()
+    ) {
     }
 
-    public static function create(UserId $id, string $fullname, EmailAddress $email, string $password): Self
-    {
+    public static function create(
+        UserId $id,
+        string $fullname,
+        EmailAddress $email,
+        string $password
+    ): Self {
         $password = trim($password);
 
         if (mb_strlen($password) < 8) {
@@ -28,6 +41,11 @@ class User implements \Illuminate\Contracts\Auth\Authenticatable
         }
 
         return new Self($id, $fullname, $email, $password);
+    }
+
+    public function addProject(Project $project)
+    {
+        $this->projects->add($project);
     }
 
     public function fullname()
@@ -45,9 +63,13 @@ class User implements \Illuminate\Contracts\Auth\Authenticatable
         return $this->userId->id();
     }
 
+    public function projects()
+    {
+        return $this->projects();
+    }
+
     public function getAuthIdentifierName()
     {
         return 'userId';
     }
-
 }

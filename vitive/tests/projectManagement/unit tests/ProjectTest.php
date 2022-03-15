@@ -3,12 +3,10 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use Vitive\projectManagement\domain\EmptyProjectNameException;
 use Vitive\projectManagement\domain\Project;
 use Vitive\projectManagement\domain\vo\ProjectId;
 use Ramsey\Uuid\Uuid;
 use Vitive\projectManagement\domain\vo\MemberId;
-use Vitive\projectManagement\domain\vo\OwnerId;
 use Vitive\projectManagement\domain\vo\UserId;
 
 final class ProjectTest extends TestCase

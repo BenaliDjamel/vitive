@@ -14,15 +14,26 @@ use Vitive\projectManagement\domain\vo\UserId;
 class Project
 {
 
-    private function __construct(private ProjectId $projectId,  private string $name, private ?UserId $ownerId = null, private array $members = [], private ?DateTimeImmutable $dueDate = null)
-    {
+    private function __construct(
+        private ProjectId $projectId,
+        private string $name,
+        private UserId $creator,
+        private ?UserId $ownerId = null,
+        private array $members = [],
+        private ?DateTimeImmutable $dueDate = null
+    ) {
     }
 
-    public static function create(ProjectId $projectId, string $name, ?UserId $ownerId = null, ?DateTimeImmutable $dueDate = null): Self
-    {
+    public static function create(
+        ProjectId $projectId,
+        string $name,
+        UserId $creator,
+        ?UserId $ownerId = null,
+        ?DateTimeImmutable $dueDate = null
+    ): Self {
         Self::assertNonEmptyName($name);
 
-        return new Self($projectId, $name, $ownerId, dueDate: $dueDate);
+        return new Self($projectId, $name, $creator, $ownerId, dueDate: $dueDate);
     }
 
     public function updateName(string $name)

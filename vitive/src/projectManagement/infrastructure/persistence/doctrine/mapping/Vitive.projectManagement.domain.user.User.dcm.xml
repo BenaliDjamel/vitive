@@ -8,5 +8,7 @@
           <field name="fullname" type="string" />
           <field name="email" type="email" column="email"/>
           <field name="password" column="password" type="string"/>
+
+          <one-to-many field="projects" target-entity="Vitive\projectManagement\domain\Project" mapped-by="creator" />
       </entity>
 </doctrine-mapping>
