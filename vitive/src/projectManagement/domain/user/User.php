@@ -12,11 +12,11 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vitive\projectManagement\domain\Project;
 
-class User // implements \Illuminate\Contracts\Auth\Authenticatable
+class User implements \Illuminate\Contracts\Auth\Authenticatable
 {
 
- /*    use \LaravelDoctrine\ORM\Auth\Authenticatable;
-    use HasApiTokens; */
+    use \LaravelDoctrine\ORM\Auth\Authenticatable;
+    use HasApiTokens;
 
 
     private function __construct(
@@ -61,6 +61,11 @@ class User // implements \Illuminate\Contracts\Auth\Authenticatable
     public function id()
     {
         return $this->userId->id();
+    }
+
+    public function password()
+    {
+        return $this->password;
     }
 
     public function projects()

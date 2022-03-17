@@ -33,7 +33,7 @@ return [
         'default' => [
             'dev'           => env('APP_DEBUG', false),
             'meta'          => env('DOCTRINE_METADATA', 'xml'),
-            'connection'    => env('DB_CONNECTION', 'sqlite'),
+            'connection'    => env('DB_CONNECTION', 'mysql'),
             'namespaces'    => [],
             'paths'         => [
                 //base_path('vitive/src/projectManagement/domain'),

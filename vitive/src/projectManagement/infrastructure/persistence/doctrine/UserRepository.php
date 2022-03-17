@@ -36,7 +36,7 @@ class UserRepository implements UserRepositoryInterface
     public function ofEmail(EmailAddress $email)
     {
         $user = $this->repository->findOneBy(['email' => $email->email()]);
-       /*  if (!is_null($user)) {
+        /*  if (!is_null($user)) {
             throw new DomainException('User already exist');
         }
  */

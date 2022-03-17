@@ -8,9 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class UserActiveRecord extends Authenticatable
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +20,7 @@ class UserActiveRecord extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'fullname',
         'email',
         'password',
     ];
@@ -41,4 +43,15 @@ class UserActiveRecord extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
+
+    public function projectOwner()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

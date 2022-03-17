@@ -20,6 +20,7 @@ class ProjectController extends Controller
         $project =  $this->createProject->execute(
             new ProjectRequest(
                 $request->name,
+                $request->user()->id,
                 dueDate: new DateTimeImmutable()
             )
         );

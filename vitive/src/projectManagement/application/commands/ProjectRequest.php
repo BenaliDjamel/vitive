@@ -9,7 +9,11 @@ use DateTimeImmutable;
 final class ProjectRequest
 {
 
-    public function __construct(public string $name, public ?string $ownerId = null, public ?DateTimeImmutable $dueDate = null)
-    {
+    public function __construct(
+        public string $name,
+        public string $creatorId,
+        public ?string $ownerId = null,
+        public ?DateTimeImmutable $dueDate = null
+    ) {
     }
 }

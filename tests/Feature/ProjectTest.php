@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
@@ -16,10 +17,14 @@ class ProjectTest extends TestCase
      */
     public function it_create_a_project_without_an_owner()
     {
-        Sanctum::actingAs(
+        /* Sanctum::actingAs(
             entity('Vitive\projectManagement\domain\user\User')->create()
-        );
+        ); */
+        $user = User::factory()->create();
 
+        Sanctum::actingAs(
+            $user
+        );
 
         $response = $this->postJson(
             '/api/projects/create',
@@ -34,6 +39,9 @@ class ProjectTest extends TestCase
                 'dueDate' => $response['dueDate'],
                 'owner' => $response['owner'],
                 'members' => $response['members']
+            ]);
+            $this->assertDatabaseHas('projects', [
+                'name' => 'asana-cl',
             ]);
     }
 
@@ -88,21 +96,20 @@ class ProjectTest extends TestCase
     {
         $user = entity('Vitive\projectManagement\domain\user\User')->create();
 
-        Sanctum::actingAs( $user);
+        Sanctum::actingAs($user);
 
         $project = entity('Vitive\projectManagement\domain\Project')->create();
 
-        $response = $this->putJson("/api/projects/{$project->id()}/changeOwner" , [
+        $response = $this->putJson("/api/projects/{$project->id()}/changeOwner", [
             'ownerId' =>  $user->id()
         ]);
 
         $response->assertStatus(200)
-        ->assertExactJson([
-            'id' => $response['id'],
-            'name' => $response['name'],
-            'dueDate' => $response['dueDate'],
-            'owner' => $response['owner'],
-        ]);
-
+            ->assertExactJson([
+                'id' => $response['id'],
+                'name' => $response['name'],
+                'dueDate' => $response['dueDate'],
+                'owner' => $response['owner'],
+            ]);
     }
 }

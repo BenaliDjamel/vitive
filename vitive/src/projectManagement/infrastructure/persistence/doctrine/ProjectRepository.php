@@ -38,7 +38,7 @@ class ProjectRepository implements ProjectRepositoryInterface
         return $project;
     }
 
-    public function update()
+    public function update(Project $project)
     {
         $this->entityManager->flush();
     }

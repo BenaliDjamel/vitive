@@ -60,21 +60,18 @@ return [
     */
 
     'providers' => [
-        /* 'users' => [
+         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
-        ], */
-
-         /* 'users' => [
-             'driver' => 'database',
-             'table' => 'users',
-         ], */
+        ], 
 
 
-           'users' => [
+
+            // make sure use $request->user()->id() in RouteServiceProvider
+           /* 'users' => [
              'driver' => 'doctrine',
              'model' => Vitive\projectManagement\domain\user\User::class,
-         ], 
+         ],  */
 
          
 

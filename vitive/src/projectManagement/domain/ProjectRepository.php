@@ -13,6 +13,6 @@ interface ProjectRepository
     public function ofId(ProjectId $id): Project;
     public function save(Project $project): Project;
     public function nextIdentity(): ProjectId;
-    public function update();
+    public function update(Project $project);
     public function remove(Project $project);
 }

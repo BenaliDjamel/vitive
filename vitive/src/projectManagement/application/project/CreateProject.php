@@ -10,6 +10,7 @@ use Vitive\projectManagement\domain\ProjectRepository;
 use Vitive\projectManagement\domain\Project;
 use Vitive\projectManagement\domain\vo\OwnerId;
 use Vitive\projectManagement\domain\vo\ProjectId;
+use Vitive\projectManagement\domain\vo\UserId;
 
 final class CreateProject
 {
@@ -17,7 +18,6 @@ final class CreateProject
 
     public function __construct(private ProjectRepository $projectRepository)
     {
-       
     }
 
     public function execute(ProjectRequest $request): ProjectResponse
@@ -25,7 +25,13 @@ final class CreateProject
 
         $ownerId = $request->ownerId ? OwnerId::fromString($request->ownerId) : null;
 
-        $project =  Project::create($this->projectRepository->nextIdentity(), $request->name, $ownerId, $request->dueDate);
+        $project =  Project::create(
+            $this->projectRepository->nextIdentity(),
+            $request->name,
+            UserId::fromString($request->creatorId),
+            $ownerId,
+            $request->dueDate
+        );
 
         $response = $this->projectRepository->save($project);
 

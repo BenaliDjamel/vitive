@@ -7,6 +7,9 @@ use Vitive\projectManagement\domain\ProjectRepository;
 use Vitive\projectManagement\domain\user\UserRepository;
 use Vitive\projectManagement\infrastructure\persistence\doctrine\ProjectRepository as DoctrineProjectRepository;
 use Vitive\projectManagement\infrastructure\persistence\doctrine\UserRepository as DoctrineUserRepository;
+use Vitive\projectManagement\infrastructure\persistence\Eloquent\ProjectRepository as EloquentProjectRepository;
+use Vitive\projectManagement\infrastructure\persistence\Eloquent\UserRepository as EloquentUserRepository;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -16,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(ProjectRepository::class, function(){
+/*         $this->app->bind(ProjectRepository::class, function(){
             return new DoctrineProjectRepository(
                 app('em')
             );
@@ -25,6 +28,13 @@ class AppServiceProvider extends ServiceProvider
             return new DoctrineUserRepository(
                 app('em')
             );
+        }); */
+
+        $this->app->bind(ProjectRepository::class, function(){
+            return new EloquentProjectRepository();
+        });
+        $this->app->bind(UserRepository::class, function(){
+            return new EloquentUserRepository();
         });
 
 

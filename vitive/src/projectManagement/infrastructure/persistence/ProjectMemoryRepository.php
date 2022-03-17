@@ -39,7 +39,7 @@ final class ProjectMemoryRepository implements ProjectRepository
         return ProjectId::fromString(Uuid::uuid4()->toString());
     }
 
-    public function update()
+    public function update(Project $project)
     {
     }
 

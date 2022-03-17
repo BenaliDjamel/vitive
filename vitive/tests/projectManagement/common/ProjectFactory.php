@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\projectManagement\common;
 
+use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 use Vitive\projectManagement\domain\Project;
 use Vitive\projectManagement\domain\vo\ProjectId;
+use Vitive\projectManagement\domain\vo\UserId;
 
 final class ProjectFactory
 {
@@ -16,11 +18,20 @@ final class ProjectFactory
     {
     }
 
-    public static function create(): Project
-    {
+    public static function create(
+        string $id = "48e42502-79ee-47ac-b085-4571fc0f719c",
+        string $creatorId,
+        string $name = "asana-cl",
+        UserId $ownerId = null,
+        DateTimeImmutable $dueDate = new DateTimeImmutable(),
+    ): Project {
+
         $project =  Project::create(
-            ProjectId::fromString("48e42502-79ee-47ac-b085-4571fc0f719c"),
-            "p-1"
+            ProjectId::fromString($id),
+            $name,
+            UserId::fromString($creatorId),
+            ownerId:$ownerId,
+            dueDate: $dueDate
         );
 
         return $project;

@@ -2,11 +2,15 @@
 
 declare(strict_types=1);
 
+use Doctrine\ORM\Mapping\Id;
 use PHPUnit\Framework\TestCase;
 use Vitive\projectManagement\domain\Project;
 use Vitive\projectManagement\domain\vo\ProjectId;
 use Ramsey\Uuid\Uuid;
+use Tests\projectManagement\common\ProjectFactory;
+use Tests\projectManagement\common\UserFactory;
 use Vitive\projectManagement\domain\vo\MemberId;
+use Vitive\projectManagement\domain\vo\OwnerId;
 use Vitive\projectManagement\domain\vo\UserId;
 
 final class ProjectTest extends TestCase
@@ -18,11 +22,13 @@ final class ProjectTest extends TestCase
     public function it_create_project_without_an_owner(): void
     {
         $id = $this->createUuid();
+        $user = UserFactory::create();
 
-        $project = Project::create(ProjectId::fromString($id), 'p1');
+        $project = ProjectFactory::create(id: $id, creatorId: $user->id());
 
-        $this->assertEquals('p1', $project->name());
+        $this->assertEquals('asana-cl', $project->name());
         $this->assertEquals($id, $project->id());
+        $this->assertEquals($user->id(), $project->creator());
     }
 
 
@@ -35,8 +41,9 @@ final class ProjectTest extends TestCase
         $this->expectException(DomainException::class);
 
         $id = $this->createUuid();
+        $user = UserFactory::create();
 
-        Project::create(ProjectId::fromString($id), "   ");
+        ProjectFactory::create(id: $id, name: "  ", creatorId: $user->id());
     }
 
     /**
@@ -44,8 +51,10 @@ final class ProjectTest extends TestCase
      */
     public function it_update_project_name()
     {
+
         $id = $this->createUuid();
-        $project = Project::create(ProjectId::fromString($id), "p1");
+        $user = UserFactory::create();
+        $project = ProjectFactory::create(id: $id, creatorId: $user->id());
 
         $project->updateName("vivite");
 
@@ -59,12 +68,12 @@ final class ProjectTest extends TestCase
     {
 
         $id = $this->createUuid();
-        $ownerId = $this->createUuid();
-        $project = Project::create(ProjectId::fromString($id), "p1");
+        $user = UserFactory::create();
+        $project = ProjectFactory::create(id: $id, creatorId: $user->id());
 
-        $project->addOwner(UserId::fromString($ownerId));
+        $project->addOwner(UserId::fromString($user->id()));
 
-        $this->assertSame($ownerId, $project->owner());
+        $this->assertSame($user->id(), $project->owner());
     }
 
     /**
@@ -73,14 +82,21 @@ final class ProjectTest extends TestCase
     public function it_can_create_project_with_all_properties()
     {
         $id = $this->createUuid();
-        $ownerId = $this->createUuid();
+        $user = UserFactory::create();
         $dueDate = new DateTimeImmutable('2022-02-25');
 
-        $project = Project::create(ProjectId::fromString($id), 'p1', UserId::fromString($ownerId), $dueDate);
+        $project = ProjectFactory::create(
+            id: $id,
+            name: "vitive",
+            ownerId: UserId::fromString($user->id()),
+            dueDate: $dueDate,
+            creatorId: $user->id()
+        );
 
-        $this->assertEquals('p1', $project->name());
+        $this->assertEquals('vitive', $project->name());
         $this->assertEquals($id, $project->id());
-        $this->assertEquals($ownerId, $project->owner());
+        $this->assertEquals($user->id(), $project->owner());
+        $this->assertEquals($user->id(), $project->creator());
         $this->assertEquals($dueDate, $project->dueDate());
     }
 
@@ -90,10 +106,10 @@ final class ProjectTest extends TestCase
     public function it_add_a_member_to_poject()
     {
         $id = $this->createUuid();
-        $memberId = $this->createUuid();
-        $project = Project::create(ProjectId::fromString($id), "p1");
+        $user = UserFactory::create();
+        $project = ProjectFactory::create(id: $id, creatorId: $user->id());
 
-        $project->addMember(MemberId::fromString($memberId));
+        $project->addMember(MemberId::fromString($user->id()));
 
         $this->assertCount(1, $project->members());
     }

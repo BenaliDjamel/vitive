@@ -17,7 +17,7 @@ class Project
     private function __construct(
         private ProjectId $projectId,
         private string $name,
-        private UserId $creator,
+        private UserId $creatorId,
         private ?UserId $ownerId = null,
         private array $members = [],
         private ?DateTimeImmutable $dueDate = null
@@ -27,13 +27,13 @@ class Project
     public static function create(
         ProjectId $projectId,
         string $name,
-        UserId $creator,
+        UserId $creatorId,
         ?UserId $ownerId = null,
         ?DateTimeImmutable $dueDate = null
     ): Self {
         Self::assertNonEmptyName($name);
 
-        return new Self($projectId, $name, $creator, $ownerId, dueDate: $dueDate);
+        return new Self($projectId, $name, $creatorId, $ownerId, dueDate: $dueDate);
     }
 
     public function updateName(string $name)
@@ -62,6 +62,11 @@ class Project
         if (!$name) {
             throw new DomainException('Project should not be empty.');
         }
+    }
+
+    public function creator()
+    {
+        return $this->creatorId->id();
     }
 
     public function owner(): ?string
