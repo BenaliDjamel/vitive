@@ -37,10 +37,10 @@ return [
             'namespaces'    => [],
             'paths'         => [
                 //base_path('vitive/src/projectManagement/domain'),
-                base_path('vitive/src/projectManagement/infrastructure/persistence/doctrine/mapping'),
+               // base_path('vitive/src/projectManagement/infrastructure/persistence/doctrine/mapping'),
 
             ],
-            'repository'    => Doctrine\ORM\EntityRepository::class,
+          //  'repository'    => Doctrine\ORM\EntityRepository::class,
             'proxies'       => [
                 'namespace'     => false,
                 'path'          => storage_path('proxies'),

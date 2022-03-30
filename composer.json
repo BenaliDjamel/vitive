@@ -9,11 +9,9 @@
         "beberlei/assert": "^3.3",
         "fruitcake/laravel-cors": "^2.0.5",
         "guzzlehttp/guzzle": "^7.2",
-        "laravel-doctrine/orm": "^1.8",
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
-        "ramsey/uuid-doctrine": "^1.8",
         "symfony/cache": "^6.0"
     },
     "require-dev": {

@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use DomainException;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Validation\ValidationException;
 use Tests\TestCase;
@@ -70,7 +70,7 @@ class UserTest extends TestCase
     {
         $response = $this->postJson('/register', [
             'fullname' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => 'test123@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
         ]);
@@ -79,7 +79,7 @@ class UserTest extends TestCase
         $response->assertNoContent();
 
         $this->assertDatabaseHas('users', [
-            'email' => 'test@example.com',
+            'email' => 'test123@example.com',
             'fullname' => 'Test User'
         ]);
     }
@@ -90,10 +90,10 @@ class UserTest extends TestCase
     public function login_user()
     {
 
-        $user = entity('Vitive\projectManagement\domain\user\User')->create();
+        $user = User::factory()->create();
 
         $response = $this->postJson('/login', [
-            'email' => $user->email(),
+            'email' => $user->email,
             'password' => 'password',
         ]);
 
@@ -103,10 +103,10 @@ class UserTest extends TestCase
 
     public function test_users_can_not_authenticate_with_invalid_password()
     {
-        $user = entity('Vitive\projectManagement\domain\user\User')->create();
+        $user = User::factory()->create();
 
         $this->post('/login', [
-            'email' => $user->email(),
+            'email' => $user->email,
             'password' => 'wrong-password',
         ]);
 

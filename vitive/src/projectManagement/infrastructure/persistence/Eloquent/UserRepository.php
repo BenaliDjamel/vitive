@@ -3,6 +3,7 @@
 namespace Vitive\projectManagement\infrastructure\persistence\Eloquent;
 
 use App\Models\User as UserEloquent;
+use DomainException;
 use Ramsey\Uuid\Uuid;
 use Vitive\projectManagement\domain\user\UserRepository as UserRepositoryInterface;
 use Vitive\projectManagement\domain\user\User;
@@ -32,13 +33,16 @@ class UserRepository implements UserRepositoryInterface
     public function ofEmail(EmailAddress $email)
     {
         $user = UserEloquent::where('email', $email->email())->first();
+        if ($user) {
+            return User::create(
+                UserId::fromString($user->id),
+                $user->fullname,
+                EmailAddress::fromString($user->email),
+                $user->password
+            );
+        }
 
-        return User::create(
-            UserId::fromString($user->id),
-            $user->fullname,
-            EmailAddress::fromString($user->email),
-            $user->password
-        );
+        
     }
 
     public function save(User $userEntity): User
@@ -54,7 +58,7 @@ class UserRepository implements UserRepositoryInterface
         return $userEntity;
     }
 
-   /*  public function update(User $userEntity)
+    /*  public function update(User $userEntity)
     {
         $user = UserEloquent::where('id', $userEntity->id());
         $user->fullname = $userEntity->fullname();
