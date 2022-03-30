@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
@@ -17,9 +18,7 @@ class ProjectTest extends TestCase
      */
     public function it_create_a_project_without_an_owner()
     {
-        /* Sanctum::actingAs(
-            entity('Vitive\projectManagement\domain\user\User')->create()
-        ); */
+
         $user = User::factory()->create();
 
         Sanctum::actingAs(
@@ -40,9 +39,9 @@ class ProjectTest extends TestCase
                 'owner' => $response['owner'],
                 'members' => $response['members']
             ]);
-            $this->assertDatabaseHas('projects', [
-                'name' => 'asana-cl',
-            ]);
+        $this->assertDatabaseHas('projects', [
+            'name' => 'asana-cl',
+        ]);
     }
 
     /**
@@ -50,13 +49,14 @@ class ProjectTest extends TestCase
      */
     public function it_update_project_name()
     {
+
         Sanctum::actingAs(
-            entity('Vitive\projectManagement\domain\user\User')->create()
+            User::factory()->create()
         );
 
-        $project = entity('Vitive\projectManagement\domain\Project')->create();
+        $project = Project::factory()->create();
 
-        $response = $this->putJson("/api/projects/{$project->id()}", [
+        $response = $this->putJson("/api/projects/{$project->id}", [
             'name' => 'asana-cl-updated'
         ]);
 
@@ -68,6 +68,10 @@ class ProjectTest extends TestCase
                 'owner' => $response['owner'],
                 'members' => $response['members']
             ]);
+
+        $this->assertDatabaseHas('projects', [
+            'name' => 'asana-cl-updated',
+        ]);
     }
 
     /**
@@ -75,17 +79,18 @@ class ProjectTest extends TestCase
      */
     public function it_deletes_a_project()
     {
+        
         Sanctum::actingAs(
-            entity('Vitive\projectManagement\domain\user\User')->create()
+            User::factory()->create()
         );
 
-        $project = entity('Vitive\projectManagement\domain\Project')->create();
+        $project = Project::factory()->create();
 
-        $response = $this->deleteJson("/api/projects/{$project->id()}");
+        $response = $this->deleteJson("/api/projects/{$project->id}");
 
         $response->assertStatus(200);
         $this->assertDatabaseMissing('projects', [
-            'id' => $project->id(),
+            'id' => $project->id,
         ]);
     }
 
@@ -94,14 +99,16 @@ class ProjectTest extends TestCase
      */
     public function it_add_an_owner_to_a_project()
     {
-        $user = entity('Vitive\projectManagement\domain\user\User')->create();
+        $user = User::factory()->create();
 
-        Sanctum::actingAs($user);
+        Sanctum::actingAs(
+            $user
+        );
 
-        $project = entity('Vitive\projectManagement\domain\Project')->create();
+        $project = Project::factory()->create();
 
-        $response = $this->putJson("/api/projects/{$project->id()}/changeOwner", [
-            'ownerId' =>  $user->id()
+        $response = $this->putJson("/api/projects/{$project->id}/changeOwner", [
+            'ownerId' =>  $user->id
         ]);
 
         $response->assertStatus(200)
@@ -109,7 +116,7 @@ class ProjectTest extends TestCase
                 'id' => $response['id'],
                 'name' => $response['name'],
                 'dueDate' => $response['dueDate'],
-                'owner' => $response['owner'],
+                'owner' => $user->id,
             ]);
     }
 }

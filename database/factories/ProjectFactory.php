@@ -22,7 +22,7 @@ class ProjectFactory extends Factory
         return [
             'id' => ProjectId::fromString($this->faker->uuid()),
             'name' => $this->faker->name(),
-            'dueDate' => new DateTimeImmutable(),
+            'due_date' => new DateTimeImmutable(),
             'creator_id' => User::factory(),
         ];
     }

@@ -26,7 +26,7 @@ class ProjectRepository implements ProjectRepositoryInterface
             ProjectId::fromString($project->id),
             $project->name,
             UserId::fromString($project->creator_id),
-            UserId::fromString($project->owner_id),
+            $project->owner_id ? UserId::fromString($project->owner_id): null,
             $project->dueDate,
         );
     }
@@ -47,7 +47,7 @@ class ProjectRepository implements ProjectRepositoryInterface
 
     public function update(Project $projectEntity)
     {
-        $project = projectEloquent::where('id', $projectEntity->id());
+        $project = projectEloquent::where('id', $projectEntity->id())->first();
         $project->name = $projectEntity->name();
         $project->owner_id = $projectEntity->owner();
         $project->due_date = $projectEntity->dueDate();

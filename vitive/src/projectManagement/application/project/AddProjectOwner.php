@@ -33,7 +33,7 @@ final class AddProjectOwner
 
         $project->addOwner(UserId::fromString($request->ownerId));
 
-        $this->projectRepository->update();
+        $this->projectRepository->update($project);
 
         return $project;
     }

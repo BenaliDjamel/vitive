@@ -21,8 +21,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::post('projects/create', [ProjectController::class, 'store']);
-    Route::put('projects/{id}', UpdateProjectController::class);
     Route::put('projects/{id}/changeOwner', ChangeProjectOwnerController::class);
+    Route::put('projects/{id}', UpdateProjectController::class);
     Route::delete('projects/{id}', DeleteProjectController::class);
 
 });

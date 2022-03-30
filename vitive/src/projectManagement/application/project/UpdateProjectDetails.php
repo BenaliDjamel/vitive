@@ -32,8 +32,7 @@ final class UpdateProjectDetails
 
         $project->updateName($request->name);
 
-        // this will flush the repository so persist changes to DB
-        $this->projectRepository->update();
+        $this->projectRepository->update($project);
 
         return new UpdateProjectResponse($project->id(), $project->name());
     }
