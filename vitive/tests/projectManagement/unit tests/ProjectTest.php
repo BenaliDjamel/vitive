@@ -2,15 +2,11 @@
 
 declare(strict_types=1);
 
-use Doctrine\ORM\Mapping\Id;
 use PHPUnit\Framework\TestCase;
-use Vitive\projectManagement\domain\Project;
-use Vitive\projectManagement\domain\vo\ProjectId;
 use Ramsey\Uuid\Uuid;
 use Tests\projectManagement\common\ProjectFactory;
 use Tests\projectManagement\common\UserFactory;
 use Vitive\projectManagement\domain\vo\MemberId;
-use Vitive\projectManagement\domain\vo\OwnerId;
 use Vitive\projectManagement\domain\vo\UserId;
 
 final class ProjectTest extends TestCase
