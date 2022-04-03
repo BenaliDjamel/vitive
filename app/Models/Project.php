@@ -27,4 +27,9 @@ class Project extends Model
     {
         return $this->hasOne(User::class);
     }
+
+    public function workspace()
+    {
+        return $this->belongsTo(Project::class);
+    }
 }

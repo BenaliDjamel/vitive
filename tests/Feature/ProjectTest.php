@@ -26,7 +26,7 @@ class ProjectTest extends TestCase
         );
 
         $response = $this->postJson(
-            '/api/projects/create',
+            '/api/projects',
             ['name' => 'asana-cl']
         );
 

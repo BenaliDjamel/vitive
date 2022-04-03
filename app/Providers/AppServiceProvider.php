@@ -5,10 +5,10 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Vitive\projectManagement\domain\ProjectRepository;
 use Vitive\projectManagement\domain\user\UserRepository;
-use Vitive\projectManagement\infrastructure\persistence\doctrine\ProjectRepository as DoctrineProjectRepository;
-use Vitive\projectManagement\infrastructure\persistence\doctrine\UserRepository as DoctrineUserRepository;
+use Vitive\projectManagement\domain\Workspace\WorkspaceRepository;
 use Vitive\projectManagement\infrastructure\persistence\Eloquent\ProjectRepository as EloquentProjectRepository;
 use Vitive\projectManagement\infrastructure\persistence\Eloquent\UserRepository as EloquentUserRepository;
+use Vitive\projectManagement\infrastructure\persistence\Eloquent\WorkspaceRepository as EloquentWorkspaceRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,10 +33,14 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ProjectRepository::class, function(){
             return new EloquentProjectRepository();
         });
+
         $this->app->bind(UserRepository::class, function(){
             return new EloquentUserRepository();
         });
 
+        $this->app->bind(WorkspaceRepository::class, function(){
+            return new EloquentWorkspaceRepository();
+        });
 
     }
 

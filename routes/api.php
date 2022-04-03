@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChangeProjectOwnerController;
+use App\Http\Controllers\CreateWorkspaceController;
 use App\Http\Controllers\DeleteProjectController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SignUpUserController;
@@ -19,14 +20,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth:sanctum'])->group(function () {
-
-    Route::post('projects/create', [ProjectController::class, 'store']);
+    //project routes
+    Route::post('projects', [ProjectController::class, 'store']);
     Route::put('projects/{id}/changeOwner', ChangeProjectOwnerController::class);
     Route::put('projects/{id}', UpdateProjectController::class);
     Route::delete('projects/{id}', DeleteProjectController::class);
+    
+    //workspace routes
+    Route::post('workspaces', CreateWorkspaceController::class);
 
 });
-
 
 
 Route::post('signup', SignUpUserController::class);
