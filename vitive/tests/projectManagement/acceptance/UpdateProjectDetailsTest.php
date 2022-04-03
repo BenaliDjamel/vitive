@@ -8,6 +8,7 @@ use Vitive\projectManagement\application\project\UpdateProjectDetails;
 use Vitive\projectManagement\domain\ProjectRepository;
 use Vitive\projectManagement\infrastructure\persistence\ProjectMemoryRepository;
 use Tests\projectManagement\common\ProjectFactory;
+use Tests\projectManagement\common\UserFactory;
 
 final class UpdateProjectDetailsTest extends TestCase
 {
@@ -29,8 +30,10 @@ final class UpdateProjectDetailsTest extends TestCase
      */
     public function it_update_project_name()
     {
+        $user = UserFactory::create();
+        $project = ProjectFactory::create(creatorId: $user->id());
 
-        $project = $this->projectRepository->save(ProjectFactory::create());
+        $project = $this->projectRepository->save($project);
 
         $project = $this->updateProjectDetails->execute(new UpdateProjectRequest($project->id(), "vitive"));
 

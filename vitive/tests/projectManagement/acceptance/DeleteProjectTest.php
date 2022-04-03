@@ -29,7 +29,7 @@ final class DeleteProjectTest extends TestCase
         $this->createProject = new CreateProject($this->projectRepository);
         $this->deleteProject = new DeleteProject($this->projectRepository);
 
-        $this->project = $this->createProject->execute(new ProjectRequest("project-1"));
+        $this->project = $this->createProject->execute(new ProjectRequest("project-1", '55e42502-79ee-47ac-b085-4571fc0f719c'));
     }
 
 

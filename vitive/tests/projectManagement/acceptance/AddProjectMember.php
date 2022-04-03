@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Vitive\projectManagement\application\project\UserDoesNotExistException;
 use Tests\projectManagement\common\MemberFactory;
 use Tests\projectManagement\common\ProjectFactory;
+use Tests\projectManagement\common\UserFactory;
 use Vitive\projectManagement\application\commands\AddProjectMemberRequest;
 use Vitive\projectManagement\application\commands\ProjectResponse;
 use Vitive\projectManagement\application\project\AddProjectMember;
@@ -39,7 +40,10 @@ final class AddProjectMemberTest extends TestCase
     public function it_add_a_member_to_project()
     {
         $memberId = "55e42502-79ee-47ac-b085-4571fc0f719c";
-        $project = ProjectFactory::create();
+        $user = UserFactory::create();
+
+        $project = ProjectFactory::create(creatorId: $user->id());
+
         $this->projectRepository->save($project);
 
         /* memberEmail = "djamel@benali.com";

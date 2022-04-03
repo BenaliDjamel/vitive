@@ -8,6 +8,7 @@ use Vitive\projectManagement\application\commands\AddProjectOwnerRequest;
 use Vitive\projectManagement\domain\ProjectRepository;
 use Vitive\projectManagement\infrastructure\persistence\ProjectMemoryRepository;
 use Tests\projectManagement\common\ProjectFactory;
+use Tests\projectManagement\common\UserFactory;
 
 final class AddProjectOwnerTest extends TestCase
 {
@@ -31,7 +32,9 @@ final class AddProjectOwnerTest extends TestCase
     public function it_add_an_owner_to_a_project()
     {
         $ownerId = "55e42502-79ee-47ac-b085-4571fc0f719c";
-        $project = ProjectFactory::create();
+        $user = UserFactory::create();
+        $project = ProjectFactory::create(creatorId: $user->id());
+
         $this->projectRepository->save($project);
 
 
