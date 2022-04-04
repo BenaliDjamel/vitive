@@ -1,5 +1,5 @@
 <testsuites>
         <testsuite name="Test Suite">
-            <directory suffix="Test.php">./tests/projectManagement</directory>
+            <directory suffix="Test.php">./tests/ProjectManagement</directory>
         </testsuite>
     </testsuites>

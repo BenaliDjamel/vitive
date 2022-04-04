@@ -12,7 +12,7 @@
             <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
           <testsuite name="Test Suite">
-            <directory suffix="Test.php">./vitive/tests/projectManagement</directory>
+            <directory suffix="Test.php">./vitive/tests/ProjectManagement</directory>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">

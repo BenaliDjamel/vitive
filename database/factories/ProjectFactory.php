@@ -6,9 +6,6 @@ namespace Database\Factories;
 use App\Models\User;
 use DateTimeImmutable;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-use Vitive\projectManagement\domain\vo\ProjectId;
-use Vitive\projectManagement\domain\vo\UserId;
 
 class ProjectFactory extends Factory
 {
@@ -20,7 +17,7 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
-            'id' => ProjectId::fromString($this->faker->uuid()),
+            'id' => $this->faker->uuid(),
             'name' => $this->faker->name(),
             'due_date' => new DateTimeImmutable(),
             'creator_id' => User::factory(),

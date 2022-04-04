@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-use Vitive\projectManagement\application\commands\user\SignUpUserRequest;
-use Vitive\projectManagement\application\user\SignUpUser;
+use Vitive\ProjectManagement\Application\Commands\User\SignUpUserRequest;
+use Vitive\ProjectManagement\Application\User\SignUpUser;
 
 class RegisteredUserController extends Controller
 {

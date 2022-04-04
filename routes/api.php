@@ -1,12 +1,14 @@
 <?php
-
-use App\Http\Controllers\ChangeProjectOwnerController;
-use App\Http\Controllers\CreateWorkspaceController;
-use App\Http\Controllers\DeleteProjectController;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\SignUpUserController;
-use App\Http\Controllers\UpdateProjectController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\ProjectManagement\ChangeProjectOwnerController;
+use App\Http\Controllers\ProjectManagement\CreateWorkspaceController;
+use App\Http\Controllers\ProjectManagement\DeleteProjectController;
+use App\Http\Controllers\ProjectManagement\ProjectController;
+use App\Http\Controllers\ProjectManagement\UpdateProjectController;
+
+use App\Http\Controllers\SignUpUserController;
+
 
 /*
 |--------------------------------------------------------------------------

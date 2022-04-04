@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SignupRequest;
 use Illuminate\Http\Request;
-use Vitive\projectManagement\application\commands\user\SignUpUserRequest;
-use Vitive\projectManagement\application\user\SignUpUser;
+use Vitive\ProjectManagement\Application\Commands\User\SignUpUserRequest;
+use Vitive\ProjectManagement\Application\User\SignUpUser;
 
 class SignUpUserController extends Controller
 {

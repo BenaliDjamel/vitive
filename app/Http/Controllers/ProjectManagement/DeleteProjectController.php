@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Http\Controllers\ProjectManagement;
+
+use App\Http\Controllers\Controller;
+
+use Illuminate\Http\Request;
+use Vitive\ProjectManagement\Application\Commands\Project\DeleteProjectRequest;
+use Vitive\ProjectManagement\Application\Project\DeleteProject;
+
+class DeleteProjectController extends Controller
+{
+
+    public function __construct(private DeleteProject $deleteProject)
+    {
+    }
+
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function __invoke(Request $request, $id)
+    {
+        $this->deleteProject->execute(new DeleteProjectRequest($id));
+    }
+}

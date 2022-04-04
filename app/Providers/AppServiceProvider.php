@@ -3,12 +3,12 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Vitive\projectManagement\domain\ProjectRepository;
-use Vitive\projectManagement\domain\user\UserRepository;
-use Vitive\projectManagement\domain\Workspace\WorkspaceRepository;
-use Vitive\projectManagement\infrastructure\persistence\Eloquent\ProjectRepository as EloquentProjectRepository;
-use Vitive\projectManagement\infrastructure\persistence\Eloquent\UserRepository as EloquentUserRepository;
-use Vitive\projectManagement\infrastructure\persistence\Eloquent\WorkspaceRepository as EloquentWorkspaceRepository;
+use Vitive\ProjectManagement\Domain\Project\ProjectRepository;
+use Vitive\ProjectManagement\Domain\User\UserRepository;
+use Vitive\ProjectManagement\Domain\Workspace\WorkspaceRepository;
+use Vitive\ProjectManagement\Infrastructure\Persistence\Eloquent\ProjectRepository as EloquentProjectRepository;
+use Vitive\ProjectManagement\Infrastructure\Persistence\Eloquent\UserRepository as EloquentUserRepository;
+use Vitive\ProjectManagement\Infrastructure\Persistence\Eloquent\WorkspaceRepository as EloquentWorkspaceRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
