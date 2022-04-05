@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class WorkspaceFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'id' => $this->faker->uuid(),
+            'name' =>  $this->faker->name(),
+            'creator_id' => User::factory()
         ];
     }
 }

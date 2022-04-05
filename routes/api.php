@@ -30,6 +30,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     
     //workspace routes
     Route::post('workspaces', CreateWorkspaceController::class);
+    Route::delete('workspaces/{id}', CreateWorkspaceController::class);
 
 });
 

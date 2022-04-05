@@ -9,14 +9,19 @@ class Workspace extends Model
 {
     use HasFactory;
 
+    public $incrementing = false;
+
+    protected $fillable = [
+        'name',
+    ];
+
     public function user()
     {
-       return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function projects()
     {
         return $this->hasMany(Project::class);
     }
-    
 }
