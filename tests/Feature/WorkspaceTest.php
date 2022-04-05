@@ -2,10 +2,11 @@
 
 namespace Tests\Feature;
 
-use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
+use App\Models\User;
+use Laravel\Sanctum\Sanctum;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class WorkspaceTest extends TestCase
 {
@@ -20,14 +21,31 @@ class WorkspaceTest extends TestCase
         Sanctum::actingAs($user);
 
         $response = $this->postJson('/api/workspaces', [
-            'name'=> 'IT'
+            'name' => 'IT'
         ]);
 
         $response
-        ->assertStatus(200);
+            ->assertStatus(200);
 
         $this->assertDatabaseHas('workspaces', [
             'name' => 'IT',
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_create_workspace_with_empty_name_throws_exception()
+    {
+
+        $this->expectException(ValidationException::class);
+
+        $user = User::factory()->create();
+
+        Sanctum::actingAs($user);
+
+        $this->withoutExceptionHandling()->postJson('/api/workspaces', [
+            'name' => ''
         ]);
     }
 }

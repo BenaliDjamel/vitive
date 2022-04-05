@@ -23,6 +23,11 @@ class CreateWorkspaceController extends Controller
      */
     public function __invoke(Request $request)
     {
+
+        $request->validate([
+            'name' => ['required', 'min:2', 'max:20']
+        ]);
+        
         $workspace =  $this->createWorkspace->execute(new WorkspaceRequest(
             $request->name,
             $request->user()->id
