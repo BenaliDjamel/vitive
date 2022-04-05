@@ -5,8 +5,8 @@ namespace App\Http\Controllers\ProjectManagement;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use Vitive\ProjectManagement\Application\Commands\Project\DeleteProjectRequest;
 use Vitive\ProjectManagement\Application\Project\DeleteProject;
+use Vitive\ProjectManagement\Application\Commands\Project\DeleteProjectRequest;
 
 class DeleteProjectController extends Controller
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Vitive\ProjectManagement\application\Workspace;
+namespace Vitive\ProjectManagement\Application\Workspace;
 
 use Vitive\ProjectManagement\Domain\vo\UserId;
 use Vitive\ProjectManagement\Domain\Workspace\Workspace;

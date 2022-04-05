@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use Tests\ProjectManagement\common\UserFactory;
+use Tests\ProjectManagement\Common\UserFactory;
 use Vitive\ProjectManagement\Application\Commands\Workspace\WorkspaceRequest;
 use Vitive\ProjectManagement\Application\Workspace\CreateWorkspace;
 use Vitive\ProjectManagement\Domain\Workspace\WorkspaceRepository;
