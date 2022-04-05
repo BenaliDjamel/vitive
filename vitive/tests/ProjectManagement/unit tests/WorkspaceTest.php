@@ -28,4 +28,19 @@ final class WorkspaceTest extends TestCase
             $workspace->creator()
         );
     }
+
+    /**
+     * @test
+     */
+    public function it_create_workspace_with_empty_name_throws_exception()
+    {
+        $this->expectException(DomainException::class);
+
+        Workspace::create(
+            WorkspaceId::fromString('55e42502-79ee-47ac-b085-4571fc0f719c'),
+            '',
+            UserId::fromString('65e42502-79ee-47ac-b085-4571fc0f719c')
+        );
+
+    }
 }
