@@ -78,8 +78,9 @@ class WorkspaceTest extends TestCase
         $workspace = Workspace::factory()->create();
 
         $response = $this->deleteJson("/api/workspaces/{$workspace->id}");
+        
         $response->assertStatus(200);
-        $this->assertDatabaseMissing('worspaces', [
+        $this->assertDatabaseMissing('workspaces', [
             'id' => $workspace->id,
         ]);
     }

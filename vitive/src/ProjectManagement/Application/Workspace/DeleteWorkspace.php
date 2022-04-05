@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Vitive\ProjectManagement\application\Workspace;
+namespace Vitive\ProjectManagement\Application\Workspace;
 
 use DomainException;
-use Vitive\ProjectManagement\domain\vo\WorkspaceId;
+use Vitive\ProjectManagement\Domain\vo\WorkspaceId;
 use Vitive\ProjectManagement\Domain\Workspace\WorkspaceRepository;
 use Vitive\ProjectManagement\Application\Commands\Workspace\DeleteWorkspaceRequest;
 

@@ -1,11 +1,13 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\ProjectManagement\ChangeProjectOwnerController;
-use App\Http\Controllers\ProjectManagement\CreateWorkspaceController;
-use App\Http\Controllers\ProjectManagement\DeleteProjectController;
 use App\Http\Controllers\ProjectManagement\ProjectController;
+use App\Http\Controllers\ProjectManagement\DeleteProjectController;
 use App\Http\Controllers\ProjectManagement\UpdateProjectController;
+use App\Http\Controllers\ProjectManagement\DeleteWorkspaceController;
+use App\Http\Controllers\ProjectManagement\CreateWorkspaceController;
+use App\Http\Controllers\ProjectManagement\ChangeProjectOwnerController;
 
 use App\Http\Controllers\SignUpUserController;
 
@@ -30,7 +32,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     
     //workspace routes
     Route::post('workspaces', CreateWorkspaceController::class);
-    Route::delete('workspaces/{id}', CreateWorkspaceController::class);
+    Route::delete('workspaces/{id}', DeleteWorkspaceController::class);
 
 });
 
