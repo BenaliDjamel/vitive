@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Vitive\ProjectManagement\domain\vo;
+namespace Vitive\ProjectManagement\Domain\vo;
 
 use Assert\Assert;
 

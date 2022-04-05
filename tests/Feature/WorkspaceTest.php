@@ -70,6 +70,26 @@ class WorkspaceTest extends TestCase
     /**
      * @test
      */
+    public function it_changes_workspace_name()
+    {
+        $user = User::factory()->create();
+        Sanctum::actingAs($user);
+
+        $workspace = Workspace::factory()->create();
+        
+        $response = $this->putJson("/api/workspaces/{$workspace->id}", [
+            'name' => "IT-V2"
+        ]);
+
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('workspaces', [
+            'name' => "IT-V2",
+        ]);
+    }
+
+    /**
+     * @test
+     */
     public function it_delete_workspace()
     {
         $user = User::factory()->create();

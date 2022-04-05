@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\ProjectManagement;
 
-use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Vitive\ProjectManagement\Application\Commands\Project\AddProjectOwnerRequest;
 use Vitive\ProjectManagement\Application\Project\AddProjectOwner;
 

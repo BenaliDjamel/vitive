@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\ProjectManagement;
 
-use App\Http\Controllers\Controller;
 
 use DateTimeImmutable;
 use Illuminate\Http\Request;
-use Vitive\ProjectManagement\Application\Commands\Project\ProjectRequest;
+use App\Http\Controllers\Controller;
 use Vitive\ProjectManagement\Application\Project\CreateProject;
+use Vitive\ProjectManagement\Application\Commands\Project\ProjectRequest;
 
 class ProjectController extends Controller
 {

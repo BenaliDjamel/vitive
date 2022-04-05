@@ -44,7 +44,7 @@ class WorkspaceRepository implements WorkspacerepositoryInterface
     {
         $workspace = WorkspaceEloquent::where('id', $workspaceEntity->id())->first();
         $workspace->name = $workspaceEntity->name();
-        $workspace->owner_id = $workspaceEntity->creator();
+        $workspace->creator_id = $workspaceEntity->creator();
         $workspace->save();
     }
 
