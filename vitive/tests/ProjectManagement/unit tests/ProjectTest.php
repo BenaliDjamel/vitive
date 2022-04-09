@@ -52,7 +52,7 @@ final class ProjectTest extends TestCase
         $user = UserFactory::create();
         $project = ProjectFactory::create(id: $id, creatorId: $user->id());
 
-        $project->updateName("vivite");
+        $project->changeName("vivite");
 
         $this->assertSame("vivite", $project->name());
     }

@@ -35,7 +35,7 @@ class Project
         return new Self($projectId, $name, $creatorId, $ownerId, dueDate: $dueDate);
     }
 
-    public function updateName(string $name)
+    public function changeName(string $name)
     {
 
         Self::assertNonEmptyName($name);

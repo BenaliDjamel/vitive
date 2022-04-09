@@ -27,7 +27,7 @@ final class UpdateProjectDetails
             throw new DomainException("Project does not found.");
         }
 
-        $project->updateName($request->name);
+        $project->changeName($request->name);
 
         $this->projectRepository->update($project);
 
