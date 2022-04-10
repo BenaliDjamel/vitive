@@ -15,7 +15,7 @@ class Workspace extends Model
         'name',
     ];
 
-    public function user()
+    public function creator()
     {
         return $this->belongsTo(User::class);
     }
